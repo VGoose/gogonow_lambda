@@ -18,6 +18,13 @@ const config = {
   module: {
     //babel configuration
     rules: [
+      // {
+      //   //ensure this runs before other loaders
+      //   enforce: "pre",
+      //   test: /\.js$/,
+      //   exclude: /node_modules/,
+      //   loader: "eslint-loader",
+      // },
       {
         use: 'babel-loader',
         test: /\.js$/,
@@ -36,7 +43,7 @@ const config = {
       cacheGroups: {
         commons: {
           test: /[\\/]node_modules[\\/]/,
-          name: "vendor", 
+          name: "vendor",
           chunks: "all"
         }
       }
@@ -48,6 +55,9 @@ const config = {
     // }),
     new HtmlWebpackPlugin({
       template: 'src/index.html'
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     })
   ]
 };
