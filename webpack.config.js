@@ -2,15 +2,10 @@ const path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const VENDOR_LIBS = [
-  'react-dom', 'react'
-];
-
 const config = {
   mode: 'development',
   entry: {
     bundle: './src/index.js',
-    vendor: VENDOR_LIBS
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -48,12 +43,12 @@ const config = {
           chunks: "all"
         }
       }
+    },
+    runtimeChunk: {
+      name: 'manifest'
     }
   },
   plugins: [
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   names: ['vendor', 'manifest']
-    // }),
     new HtmlWebpackPlugin({
       template: 'src/index.html'
     })
