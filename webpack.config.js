@@ -3,6 +3,9 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
+  node: {
+    fs: 'empty'
+  },
   mode: 'development',
   entry: {
     bundle: './src/index.js',
@@ -14,13 +17,6 @@ const config = {
   module: {
     //babel configuration
     rules: [
-      // {
-      //   //ensure this runs before other loaders
-      //   enforce: "pre",
-      //   test: /\.js$/,
-      //   exclude: /node_modules/,
-      //   loader: "eslint-loader",
-      // },
       {
         use: 'babel-loader',
         test: /\.js$/,
