@@ -1,31 +1,34 @@
+import stops from '../stops.JSON';
 
 
+// module.exports.findClosestStation = async function findClosestStation(x, radius) {
 
-module.exports.getUserPosition = function getUserPosition() {
-	if (!navigator.geolocation) {
-		return 'Your browser does not support gelocation';
-	}
-	let geo = navigator.geolocation;
-	return new Promise((resolve, reject) => {
-		geo.getCurrentPosition(resolve, reject)
-	})
-}
-
-module.exports.findClosestStation = async function findClosestStation(coord) {
-	// const { latitude, longitude } = coord;
-	let stationDists = await getStationsEuclideanDist();
-	let station;
+// 	let stationDists = await getStationsEuclideanDist();
+// 	let station;
 
 
-	//euclidean distance comparison
-	//calc euclidean distance of all stops, make into a sorted array
-	//match 
-
-	return station;
-}
+// 	//euclidean distance comparison
+// 	//calc euclidean distance of all stops, make into a sorted array
+// 	//match 
+// 	return station;
+// }
 
 
 module.exports = {
+
+	findClosestStation: () => {
+
+	},
+
+	getUserPosition: () => {
+		if (!navigator.geolocation) {
+			return 'Your browser does not support gelocation';
+		}
+		let geo = navigator.geolocation;
+		return new Promise((resolve, reject) => {
+			geo.getCurrentPosition(resolve, reject)
+		})	
+	},
 
 	getEuclideanDist: (a, b) => {
 		if(typeof a && typeof b !== 'number') {
@@ -34,9 +37,8 @@ module.exports = {
 		let result = Math.sqrt(a*a + b*b);
 		return result;
 	},
-	
+
 	getStationsEuclideanDist: async () => {
-		const stops = await getStopsData();
 		let x, y;
 		let stationsEuclideanDist = [];
 		for(stop in stops) {

@@ -1,7 +1,6 @@
 const fs = require('fs');
 const { promisify } = require('util');
 
-const readFile = promisify(fs.readFile);
 
 (async function readStops() {
 	const readFile = promisify(fs.readFile);

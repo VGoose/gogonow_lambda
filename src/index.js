@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { VictoryChart } from 'victory';
 
-import { getStopsData, getUserPosition } from './utils/helpers';
+import {getUserPosition} from './utils/helpers';
 
 class App extends React.Component {
   constructor(props) {
@@ -16,7 +16,6 @@ class App extends React.Component {
   componentDidMount(){
     navigator.geolocation ? 
       this.loadPosition() : alert('Your browser does not have geolocation');
-    this.loadData();
   }
   loadPosition = async function loadPosition() {
     try {
@@ -27,22 +26,16 @@ class App extends React.Component {
       console.log(error);
     }
   }
-  loadData = async () => {
-    try {
-      let data = await getStopsData();
-      this.setState({ data })
-    } catch(error) {
-      console.log(error);
-    }
-  }
+
   render() {
-    let { latitude, longitude, data} = this.state;
-    if(!data) {
+    let { latitude, longitude} = this.state;
+    if(!latitude) {
       return <p>Loading..</p>
     }
     return(
-      <VictoryChart data={data} ></VictoryChart>
+      <div>Lat: {latitude}, Long: {longitude}</div>
     )
+
   }
 }
 
