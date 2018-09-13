@@ -3,9 +3,7 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
-  node: {
-    fs: 'empty'
-  },
+  devtool: 'inline-cheap-module-source-map',
   mode: 'development',
   entry: {
     bundle: './src/index.js',

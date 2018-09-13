@@ -1,8 +1,7 @@
 const fs = require('fs');
 const { promisify } = require('util');
 
-const readFile = promisify(fs.readFile);
-
+//include Id into object
 (async function readStops() {
 	const readFile = promisify(fs.readFile);
 	let stops = {}; 
@@ -12,11 +11,15 @@ const readFile = promisify(fs.readFile);
 
 	for (let i = 1; i < lines.length; i++) {
 		let line = lines[i].split(',');
-		//initializing so don't get undefined error
-		stops[line[0]] = {};
-		for (let j = 1; j < line.length; j++) {
-			stops[line[0]][headers[j]] = line[j];
+		if(!stops[line[2]]){
+			//initializing so don't get undefined error
+			stops[line[2]] = {};
+			for (let j = 0; j < line.length; j++) {
+				stops[line[2]][headers[j]] = line[j];
+			}
 		}
+
+
 	}
 
 	fs.writeFile('src/stops.JSON', JSON.stringify(stops), 'utf8', (error) => {
