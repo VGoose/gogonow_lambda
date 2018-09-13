@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { getStations } from '../helpers';
+import { getStations, getStationTimes } from '../helpers';
 
 class Transit extends React.Component {
   constructor(props) {
@@ -22,6 +22,10 @@ class Transit extends React.Component {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  loadStationTimes = async function loadStationTimes(station) {
+    
   }
   
   render() {
