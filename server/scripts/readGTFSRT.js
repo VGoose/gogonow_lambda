@@ -1,32 +1,53 @@
-const GtfsRealtimeBindings = require('gtfs-realtime-bindings');
-const request = require('request');
+var GtfsRealtimeBindings = require('gtfs-realtime-bindings');
 const axios = require('axios');
 
-const END_POINT = 'http://datamine.mta.info/mta_esi.php?key=298f7883cba525efccd7eaddf72d31a8&feed_id='
-const ID = [1, 26, 16, 21, 2, 11, 31, 36, 51];
+const KEY = '298f7883cba525efccd7eaddf72d31a8'
+const URL = `http://datamine.mta.info/mta_esi.php?key=${KEY}&feed_id=`
 
-function readGTFSRTData() {
-  var requestSettings = {
-    method: 'GET',
-    url: END_POINT + ID[0],
-    encoding: null
-  };
-  request(requestSettings, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      var feed = GtfsRealtimeBindings.FeedMessage.decode(body);
-      
-      feed.entity.forEach(function(entity) {
-        if (entity.trip_update) {
-          console.log(entity.trip_update);
-        }
-      });
-    }
-  });
-
-  // axios.get(END_POINT+ID[0])
-  //   .then(res => console.log(res))
+async function getFeed() {
+  let url =  URL + '1'
+  let feed = await axios.get(url, {responseType: 'arraybuffer'})
+    .then(
+      res => GtfsRealtimeBindings.FeedMessage.decode(res.data)
+    ).catch(
+      e => console.log(e)
+    )
+  return feed;
 }
 
-readGTFSRTData();
 
-module.exports = readGTFSRTData;
+async function test() {
+  const output = {};
+  try {
+    let feed = await getFeed();
+    feed.entity.forEach(function(entity) {
+      if (entity.trip_update) {
+        let trip = entity.trip_update.stop_time_update;
+        let train = entity.trip_update.trip.trip_id;
+        
+        trip.forEach(stop => {
+          let station = stop.stop_id;
+
+          let time = stop.arrival ? stop.arrival.time : undefined;
+
+          if(output[station]) {
+            output[station].push({
+              train: train,
+              time: time,
+            })
+          }else {
+            output[station] = [{train: train, time: time}]
+          }
+        })
+      }
+    });
+  }catch(e){
+    console.log(e);
+  }
+  return output;
+}
+
+(async () => {
+  let a = await test();
+  console.log(a['623S'][0].train + a['623S'][0].time)
+})();
