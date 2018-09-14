@@ -16,7 +16,7 @@ async function getFeed() {
 }
 
 
-async function test() {
+async function getArrivalTimes() {
   const output = {};
   try {
     let feed = await getFeed();
@@ -47,7 +47,9 @@ async function test() {
   return output;
 }
 
-(async () => {
-  let a = await test();
-  console.log(a['623S'][0].train + a['623S'][0].time)
-})();
+module.exports = getArrivalTimes;
+
+// (async () => {
+//   let a = await getArrivalTimes();
+//   console.log(a['623S'][0].train + a['623S'][0].time)
+// })();

@@ -12,22 +12,7 @@
   "author": "Anh Vo",
   "license": "ISC",
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "chai": "^4.1.2",
-    "eslint": "^5.1.0",
-    "eslint-loader": "^2.1.0",
-    "html-webpack-plugin": "^3.2.0",
-    "mocha": "^5.2.0",
-    "nodemon": "^1.18.4",
-    "simple-statistics": "^6.1.0",
-    "webpack": "^4.16.1",
-    "webpack-cli": "^3.0.8",
-    "webpack-dev-server": "^3.1.7"
+    "nodemon": "^1.18.4"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -36,13 +21,6 @@
     "es6-promisify": "^6.0.0",
     "express": "^4.16.3",
     "gtfs-realtime-bindings": "0.0.4",
-    "mongoose": "^5.2.14",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "react-router": "^4.3.1",
-    "react-router-dom": "^4.3.1",
-    "request": "^2.88.0",
-    "util": "^0.11.0",
-    "victory": "^30.3.1"
+    "mongoose": "^5.2.14"
   }
 }
