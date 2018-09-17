@@ -4,8 +4,8 @@
   "description": "Should you go down?",
   "main": "index.js",
   "scripts": {
-    "clean": "rimraf dist",
-    "build": "npm run clean && webpack",
+    "clean": "rimraf dist --prefix client",
+    "build": "npm run clean && webpack --prefix client",
     "dev": "concurrently \"nodemon server/server.js\" \"webpack-dev-server\"",
     "test": "mocha || true"
   },
