@@ -6,9 +6,9 @@
   "scripts": {
     "clean": "rimraf dist --prefix client",
     "build": "npm run clean && webpack --prefix client",
-    "client": "--prefix client webpack-dev-server",
+    "client":  "npm run start --prefix client",
     "server": "nodemon server/server.js",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "dev": "concurrently \"npm run client\" \"npm run server\"",
     "test": "mocha || true"
   },
   "author": "Anh Vo",
