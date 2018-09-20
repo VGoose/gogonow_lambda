@@ -1,5 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+
+import { connect } from 'react-redux';
+import { getUsers } from '../../actions/user_actions';
 
 import { getStations, getStationTimes } from '../helpers';
 

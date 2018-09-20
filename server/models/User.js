@@ -9,9 +9,7 @@ let UserSchema = new Schema(
       required: true, 
       max: 100
     },
-    favorite_stations: [{
-      type: String
-    }]
+    favorite_stations: [String]
   }
 )
 
