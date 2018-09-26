@@ -1,8 +1,8 @@
 import {
     GET_USERS,
-    UPDATE_USERS,
+    UPDATE_USER,
     DELETE_USER,
-    ADD_USERS,
+    ADD_USER,
     USERS_LOADING
 } from '../actions/types';
 
@@ -19,7 +19,7 @@ export default function (state = initialState, action) {
                 users: action.payload,
                 loading: false
             }
-        case ADD_USERS:
+        case ADD_USER:
             return {
                 ...state,
                 users: [action.payload, ...state.users]
@@ -29,7 +29,7 @@ export default function (state = initialState, action) {
                 ...state,
                 users: state.users.filter(user => user._id !== action.payload)
             }
-        case UPDATE_USERS:
+        case UPDATE_USER:
             return {
                 ...state,
                 users: state.users.map(user => {

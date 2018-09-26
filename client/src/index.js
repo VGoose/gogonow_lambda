@@ -35,16 +35,12 @@ class App extends React.Component {
               <li>
                 <Link to="/adduser">Add User</Link>
               </li>
-              <li>
-                <Link to="/topics">Topics</Link>
-              </li>
             </ul>
             <ul>
               {userNames}
             </ul>
             <Route exact path="/" component={Transit} />
             <Route path="/adduser" component={AddUser} />
-            <Route path="/topics" component={Topics} />
           </div>
         </Router>
       </Provider>

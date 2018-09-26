@@ -15,7 +15,6 @@ async function getFeed() {
   return feed;
 }
 
-
 async function getArrivalTimes() {
   const output = {};
   try {
@@ -49,7 +48,3 @@ async function getArrivalTimes() {
 
 module.exports = getArrivalTimes;
 
-// (async () => {
-//   let a = await getArrivalTimes();
-//   console.log(a['623S'][0].train + a['623S'][0].time)
-// })();

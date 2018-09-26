@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rimraf dist --prefix client",
     "build": "npm run clean && webpack --prefix client",
-    "client":  "npm run start --prefix client",
+    "client": "npm run start --prefix client",
     "server": "nodemon server/server.js",
     "dev": "concurrently \"npm run client\" \"npm run server\"",
     "test": "mocha || true"

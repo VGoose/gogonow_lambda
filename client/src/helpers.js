@@ -1,11 +1,6 @@
 import stations from './stops.JSON';
 import { diff, findClosestIndex, getEuclideanDist } from './utils/helpers';
 
-
-
-async function getStationTimes(station) {
-	
-}
 async function getStations() {
 	let position = await getUserPosition();
 	let userLat = position.coords.latitude;

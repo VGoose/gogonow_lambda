@@ -1,18 +1,20 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import { getUsers } from '../../actions/user_actions';
+import { getUsers, setUsersLoading } from '../../actions/user_actions';
+import { getStationTimes } from '../../actions/station_actions';
 
-import { getStations, getStationTimes } from '../helpers';
+import { getStations } from '../helpers';
 
 class Transit extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      stations: undefined,
-    }
+  state = {
+    stations: undefined,
+    time: undefined,
+    times: undefined,
   }
   componentDidMount(){
+    this.props.getUsers();
+    this.loadStationTimes();
     navigator.geolocation ? 
       this.loadClosestStations() : alert('Your browser does not have geolocation');
 
@@ -25,24 +27,35 @@ class Transit extends React.Component {
       console.log(error);
     }
   }
+  loadStationTimes = async () => {
+    try {
+      let times = await getStationTimes();
+      this.setState({ times })
+    } catch(error) {
+      console.log(error);
+    }
+  }
 
-  loadStationTimes = async function loadStationTimes(station) {
-    
+  handleClick = (e) => {
+    this.setState({ time: this.state.times[e.target.key]})
   }
   
   render() {
-    let { stations } = this.state;
-
-    if(!stations) {
-      return <p>Loading..</p>
+    const { stations } = this.state;
+    const { users } = this.props.user;
+    
+    if (!stations) {
+      return 'loading...'
     }
     let stationItems = stations.map(station => {
-      return <li><button>{station.stop_name}</button></li>
+      return <li><button key={station.stop_name} onClick={this.handleClick}>{station.stop_name}</button></li>
     })
+    let userItems = users.map(user => <li>{user.name}</li>)
     return(
       <div>
         <ul>
           {stationItems}
+          {userItems}
         </ul>
       </div>
     )
@@ -50,4 +63,16 @@ class Transit extends React.Component {
   }
 }
 
-export default Transit;
+function mapStateToProps(state) {
+  return {
+    user: state.users
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  { 
+    getUsers,
+    getStationTimes
+  }
+)(Transit);
