@@ -2,20 +2,22 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 import { getUsers, setUsersLoading } from '../../actions/user_actions';
-import { getStationTimes } from '../../actions/station_actions';
+import { getSchedules } from '../../actions/schedule_actions';
 
 import { getStations } from '../helpers';
 
+//components
+import Toggle from './reusable/toggle';
+import TopBar from './top_bar';
+import TransitStation from './transit_station';
+
 class Transit extends React.Component {
   state = {
-    stations: undefined,
-    time: undefined,
-    times: undefined,
+    stations: null,
   }
-  componentDidMount(){
-    this.props.getUsers();
-    this.loadStationTimes();
-    navigator.geolocation ? 
+  componentDidMount() {
+    this.props.getSchedules();
+    navigator.geolocation ?
       this.loadClosestStations() : alert('Your browser does not have geolocation');
 
   }
@@ -27,36 +29,32 @@ class Transit extends React.Component {
       console.log(error);
     }
   }
-  loadStationTimes = async () => {
-    try {
-      let times = await getStationTimes();
-      this.setState({ times })
-    } catch(error) {
-      console.log(error);
-    }
+
+  getSchedule = (id) => {
+    // console.log(this.props.schedule[id])
   }
 
-  handleClick = (e) => {
-    this.setState({ time: this.state.times[e.target.key]})
-  }
-  
   render() {
     const { stations } = this.state;
-    const { users } = this.props.user;
-    
-    if (!stations) {
-      return 'loading...'
+    if(!stations) {
+      return (
+        <div className="transit-container">
+          <TopBar page="Transit" />
+          <hr></hr>
+        </div>
+      ) 
     }
-    let stationItems = stations.map(station => {
-      return <li><button key={station.stop_name} onClick={this.handleClick}>{station.stop_name}</button></li>
+    let stationButtons = stations.map((station) => {
+      return <button onClick={this.getSchedule(station.stop_id)}>{station.stop_name}</button>
     })
-    let userItems = users.map(user => <li>{user.name}</li>)
-    return(
-      <div>
-        <ul>
-          {stationItems}
-          {userItems}
-        </ul>
+
+    return (
+      <div className="transit-container">
+        <TopBar page="Transit" />
+        <hr></hr>
+        <div>
+          {stationButtons}
+        </div>
       </div>
     )
 
@@ -65,14 +63,17 @@ class Transit extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    user: state.users
+    user: state.users.users,
+    userLoading: state.users.loading,
+    schedule: state.schedules.schedules,
+    loading: state.schedules.loading,
   }
 }
 
 export default connect(
   mapStateToProps,
-  { 
+  {
     getUsers,
-    getStationTimes
+    getSchedules
   }
 )(Transit);

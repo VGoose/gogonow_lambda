@@ -12,8 +12,6 @@ function findClosestIndex(x, arr, start, end) {
 	if(typeof end !== 'number') {
 		end = null;
 	}
-
-	
 	let _end = end || arr.length;
 	let _start = start || 0;
 	var index = Math.floor((_end + _start) / 2)

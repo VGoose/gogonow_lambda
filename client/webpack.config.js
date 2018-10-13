@@ -23,8 +23,12 @@ const config = {
       },
       {
         //css-loader handles css, style-loader places css into html
-        use: ['style-loader', 'css-loader'],
-        test: /\.css$/
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+          { loader: 'sass-loader' }
+        ]
       }
     ]
   },

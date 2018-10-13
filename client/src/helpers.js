@@ -15,8 +15,7 @@ async function getStations() {
 		x = diff(userLat, stopLat) * 69.05;
 		y = diff(userLon, stopLon) * 52.35;
 		dist = getEuclideanDist(x, y); 
-		if(dist < 0.5 && _stations.length < 2
-		) {
+		if(dist < 0.5) {
 			stations[key].dist = dist;
 			_stations.push(stations[key])
 		}
