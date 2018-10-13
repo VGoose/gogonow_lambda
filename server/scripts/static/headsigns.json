@@ -1,0 +1,701 @@
+{
+  "1S03R": {
+    "headsign": "South Ferry"
+  },
+  "1N03R": {
+    "headsign": "Van Cortlandt Park - 242 St"
+  },
+  "1S04R": {
+    "headsign": "South Ferry"
+  },
+  "1N12R": {
+    "headsign": "137 St - City College"
+  },
+  "1S12R": {
+    "headsign": "South Ferry"
+  },
+  "1N13R": {
+    "headsign": "215 St"
+  },
+  "2S08R": {
+    "headsign": "Flatbush Av - Brooklyn College"
+  },
+  "2N08R": {
+    "headsign": "Wakefield - 241 St"
+  },
+  "2S01R": {
+    "headsign": "Flatbush Av - Brooklyn College"
+  },
+  "2N01R": {
+    "headsign": "Wakefield - 241 St"
+  },
+  "2S07R": {
+    "headsign": "Flatbush Av - Brooklyn College"
+  },
+  "2S05R": {
+    "headsign": "Flatbush Av - Brooklyn College"
+  },
+  "2N03R": {
+    "headsign": "Wakefield - 241 St"
+  },
+  "2S06R": {
+    "headsign": "New Lots Av"
+  },
+  "2S03R": {
+    "headsign": "New Lots Av"
+  },
+  "3S42R": {
+    "headsign": "Times Sq - 42 St"
+  },
+  "3N42R": {
+    "headsign": "Harlem - 148 St"
+  },
+  "3S01R": {
+    "headsign": "New Lots Av"
+  },
+  "3N01R": {
+    "headsign": "Harlem - 148 St"
+  },
+  "3S03R": {
+    "headsign": "New Lots Av"
+  },
+  "4S01R": {
+    "headsign": "New Lots Av"
+  },
+  "4S13R": {
+    "headsign": "New Lots Av"
+  },
+  "4N13R": {
+    "headsign": "Woodlawn"
+  },
+  "4S41R": {
+    "headsign": "Crown Hts - Utica Av"
+  },
+  "4S06R": {
+    "headsign": "Crown Hts - Utica Av"
+  },
+  "4N01R": {
+    "headsign": "Woodlawn"
+  },
+  "4N03R": {
+    "headsign": "Woodlawn"
+  },
+  "4N06R": {
+    "headsign": "Woodlawn"
+  },
+  "4S05R": {
+    "headsign": "Crown Hts - Utica Av"
+  },
+  "4N02R": {
+    "headsign": "Woodlawn"
+  },
+  "4S34R": {
+    "headsign": "Crown Hts - Utica Av"
+  },
+  "4S39R": {
+    "headsign": "Crown Hts - Utica Av"
+  },
+  "4S36R": {
+    "headsign": "Crown Hts - Utica Av"
+  },
+  "4S35R": {
+    "headsign": "Bowling Green"
+  },
+  "4N43R": {
+    "headsign": "Burnside Av"
+  },
+  "4N14R": {
+    "headsign": "Woodlawn"
+  },
+  "4S28R": {
+    "headsign": "Crown Hts - Utica Av"
+  },
+  "4N34R": {
+    "headsign": "Woodlawn"
+  },
+  "4S03R": {
+    "headsign": "New Lots Av"
+  },
+  "4N64R": {
+    "headsign": "Bedford Park Blvd - Lehman College"
+  },
+  "4N56R": {
+    "headsign": "Bedford Park Blvd - Lehman College"
+  },
+  "4S30R": {
+    "headsign": "New Lots Av"
+  },
+  "4S10R": {
+    "headsign": "New Lots Av"
+  },
+  "5S32R": {
+    "headsign": "E 180 St"
+  },
+  "5N32R": {
+    "headsign": "Eastchester - Dyre Av"
+  },
+  "5S01R": {
+    "headsign": "E 180 St"
+  },
+  "5N01R": {
+    "headsign": "Eastchester - Dyre Av"
+  },
+  "5S08R": {
+    "headsign": "Bowling Green"
+  },
+  "5N75R": {
+    "headsign": "Eastchester - Dyre Av"
+  },
+  "5N73R": {
+    "headsign": "Eastchester - Dyre Av"
+  },
+  "5S02R": {
+    "headsign": "Flatbush Av - Brooklyn College"
+  },
+  "5S03R": {
+    "headsign": "Flatbush Av - Brooklyn College"
+  },
+  "5N60R": {
+    "headsign": "Eastchester - Dyre Av"
+  },
+  "5S04R": {
+    "headsign": "Flatbush Av - Brooklyn College"
+  },
+  "5N71R": {
+    "headsign": "Eastchester - Dyre Av"
+  },
+  "5S09R": {
+    "headsign": "Flatbush Av - Brooklyn College"
+  },
+  "5S06R": {
+    "headsign": "Crown Hts - Utica Av"
+  },
+  "5S15R": {
+    "headsign": "Crown Hts - Utica Av"
+  },
+  "5N62R": {
+    "headsign": "Eastchester - Dyre Av"
+  },
+  "5N84R": {
+    "headsign": "E 180 St"
+  },
+  "5S42R": {
+    "headsign": "Bowling Green"
+  },
+  "5S11R": {
+    "headsign": "Bowling Green"
+  },
+  "5S14R": {
+    "headsign": "Bowling Green"
+  },
+  "5N63R": {
+    "headsign": "Eastchester - Dyre Av"
+  },
+  "5N66R": {
+    "headsign": "Eastchester - Dyre Av"
+  },
+  "5S45R": {
+    "headsign": "Flatbush Av - Brooklyn College"
+  },
+  "5N67R": {
+    "headsign": "E 180 St"
+  },
+  "5N65R": {
+    "headsign": "E 180 St"
+  },
+  "5S44R": {
+    "headsign": "Flatbush Av - Brooklyn College"
+  },
+  "5X004": {
+    "headsign": "Bowling Green"
+  },
+  "5N69R": {
+    "headsign": "Wakefield - 241 St"
+  },
+  "5S21R": {
+    "headsign": "Crown Hts - Utica Av"
+  },
+  "5S07R": {
+    "headsign": "Crown Hts - Utica Av"
+  },
+  "5S12R": {
+    "headsign": "Bowling Green"
+  },
+  "5N68R": {
+    "headsign": "Nereid Av"
+  },
+  "5N76R": {
+    "headsign": "Nereid Av"
+  },
+  "5N72R": {
+    "headsign": "Eastchester - Dyre Av"
+  },
+  "5N06R": {
+    "headsign": "Eastchester - Dyre Av"
+  },
+  "5N70R": {
+    "headsign": "Nereid Av"
+  },
+  "5N31R": {
+    "headsign": "Nereid Av"
+  },
+  "5N77R": {
+    "headsign": "Eastchester - Dyre Av"
+  },
+  "5XN74R": {
+    "headsign": "Eastchester - Dyre Av"
+  },
+  "6S01R": {
+    "headsign": "Brooklyn Bridge - City Hall"
+  },
+  "6N01R": {
+    "headsign": "Pelham Bay Park"
+  },
+  "6S03R": {
+    "headsign": "Brooklyn Bridge - City Hall"
+  },
+  "6N03R": {
+    "headsign": "Parkchester"
+  },
+  "6N06R": {
+    "headsign": "3 Av - 138 St"
+  },
+  "6S06R": {
+    "headsign": "Brooklyn Bridge - City Hall"
+  },
+  "6N07R": {
+    "headsign": "Parkchester"
+  },
+  "6XS02R": {
+    "headsign": "Brooklyn Bridge - City Hall"
+  },
+  "6XS08R": {
+    "headsign": "Brooklyn Bridge - City Hall"
+  },
+  "6XS07R": {
+    "headsign": "Brooklyn Bridge - City Hall"
+  },
+  "6XN02R": {
+    "headsign": "Pelham Bay Park"
+  },
+  "7S97R": {
+    "headsign": "34 St - 11 Av"
+  },
+  "7N97R": {
+    "headsign": "Flushing - Main St"
+  },
+  "7S99R": {
+    "headsign": "34 St - 11 Av"
+  },
+  "7N96R": {
+    "headsign": "Mets - Willets Point"
+  },
+  "7S96R": {
+    "headsign": "34 St - 11 Av"
+  },
+  "7N98R": {
+    "headsign": "Mets - Willets Point"
+  },
+  "7XS98R": {
+    "headsign": "34 St - 11 Av"
+  },
+  "7XN95R": {
+    "headsign": "Flushing - Main St"
+  },
+  "GSN01R": {
+    "headsign": "Times Sq - 42 St"
+  },
+  "GSS01R": {
+    "headsign": "Grand Central - 42 St"
+  },
+  "GSN03R": {
+    "headsign": "Times Sq - 42 St"
+  },
+  "GSS03R": {
+    "headsign": "Grand Central - 42 St"
+  },
+  "GSN04R": {
+    "headsign": "Times Sq - 42 St"
+  },
+  "GSS04R": {
+    "headsign": "Grand Central - 42 St"
+  },
+  "AS74R": {
+    "headsign": "Far Rockaway - Mott Av"
+  },
+  "AN43R": {
+    "headsign": "Euclid Av"
+  },
+  "AS43R": {
+    "headsign": "Ozone Park - Lefferts Blvd"
+  },
+  "AN09R": {
+    "headsign": "Inwood - 207 St"
+  },
+  "AN55R": {
+    "headsign": "Inwood - 207 St"
+  },
+  "AX009": {
+    "headsign": "Far Rockaway - Mott Av"
+  },
+  "AN54R": {
+    "headsign": "Inwood - 207 St"
+  },
+  "AX010": {
+    "headsign": "Ozone Park - Lefferts Blvd"
+  },
+  "AS37R": {
+    "headsign": "Ozone Park - Lefferts Blvd"
+  },
+  "AX005": {
+    "headsign": "Ozone Park - Lefferts Blvd"
+  },
+  "AN04R": {
+    "headsign": "Inwood - 207 St"
+  },
+  "AN37R": {
+    "headsign": "Euclid Av"
+  },
+  "AS52R": {
+    "headsign": "Ozone Park - Lefferts Blvd"
+  },
+  "AS16R": {
+    "headsign": "Far Rockaway - Mott Av"
+  },
+  "AN65R": {
+    "headsign": "Inwood - 207 St"
+  },
+  "AN85R": {
+    "headsign": "168 St"
+  },
+  "AN18R": {
+    "headsign": "Dyckman St"
+  },
+  "AN17R": {
+    "headsign": "Dyckman St"
+  },
+  "AN86R": {
+    "headsign": "168 St"
+  },
+  "AS87R": {
+    "headsign": "Rockaway Park - Beach 116 St"
+  },
+  "AX002": {
+    "headsign": "Ozone Park - Lefferts Blvd"
+  },
+  "AS56R": {
+    "headsign": "Far Rockaway - Mott Av"
+  },
+  "AS78R": {
+    "headsign": "Rockaway Park - Beach 116 St"
+  },
+  "AN58R": {
+    "headsign": "Euclid Av"
+  },
+  "BS45R": {
+    "headsign": "Brighton Beach"
+  },
+  "BN45R": {
+    "headsign": "Bedford Park Blvd"
+  },
+  "BN40R": {
+    "headsign": "Kingsbridge Rd"
+  },
+  "BN46R": {
+    "headsign": "145 St"
+  },
+  "BN47R": {
+    "headsign": "145 St"
+  },
+  "BS46R": {
+    "headsign": "Brighton Beach"
+  },
+  "CS04R": {
+    "headsign": "Euclid Av"
+  },
+  "CN04R": {
+    "headsign": "168 St"
+  },
+  "DS05R": {
+    "headsign": "Coney Island - Stillwell Av"
+  },
+  "DN05R": {
+    "headsign": "Norwood - 205 St"
+  },
+  "DN07R": {
+    "headsign": "Norwood - 205 St"
+  },
+  "DS07R": {
+    "headsign": "Coney Island - Stillwell Av"
+  },
+  "DS14R": {
+    "headsign": "Coney Island - Stillwell Av"
+  },
+  "DN09R": {
+    "headsign": "Bedford Park Blvd"
+  },
+  "DS78R": {
+    "headsign": "Coney Island - Stillwell Av"
+  },
+  "DN14R": {
+    "headsign": "Norwood - 205 St"
+  },
+  "ES04R": {
+    "headsign": "World Trade Center"
+  },
+  "EN05R": {
+    "headsign": "Jamaica Center - Parsons/Archer"
+  },
+  "ES69R": {
+    "headsign": "World Trade Center"
+  },
+  "EN72R": {
+    "headsign": "Jamaica Center - Parsons/Archer"
+  },
+  "ES71R": {
+    "headsign": "World Trade Center"
+  },
+  "EN66R": {
+    "headsign": "Jamaica Center - Parsons/Archer"
+  },
+  "ES56R": {
+    "headsign": "World Trade Center"
+  },
+  "EN70R": {
+    "headsign": "Kew Gardens - Union Tpke"
+  },
+  "EN55R": {
+    "headsign": "Jamaica - 179 St"
+  },
+  "FS69R": {
+    "headsign": "Coney Island - Stillwell Av"
+  },
+  "FN69R": {
+    "headsign": "Jamaica - 179 St"
+  },
+  "FN75R": {
+    "headsign": "Jamaica - 179 St"
+  },
+  "FX001": {
+    "headsign": "Church Av"
+  },
+  "FS68R": {
+    "headsign": "Kings Hwy"
+  },
+  "FN68R": {
+    "headsign": "Jamaica - 179 St"
+  },
+  "FSS01R": {
+    "headsign": "Prospect Park"
+  },
+  "FSN01R": {
+    "headsign": "Franklin Av"
+  },
+  "GS14R": {
+    "headsign": "Church Av"
+  },
+  "GN16R": {
+    "headsign": "Court Sq"
+  },
+  "GS16R": {
+    "headsign": "Church Av"
+  },
+  "GN13R": {
+    "headsign": "Court Sq"
+  },
+  "GN14R": {
+    "headsign": "Court Sq"
+  },
+  "HS21R": {
+    "headsign": "Rockaway Park - Beach 116 St"
+  },
+  "HN21R": {
+    "headsign": "Broad Channel"
+  },
+  "JS12R": {
+    "headsign": "Broad St"
+  },
+  "JN12R": {
+    "headsign": "Jamaica Center - Parsons/Archer"
+  },
+  "JN41R": {
+    "headsign": "Jamaica Center - Parsons/Archer"
+  },
+  "JS13R": {
+    "headsign": "Broad St"
+  },
+  "JN60R": {
+    "headsign": "Jamaica Center - Parsons/Archer"
+  },
+  "JS15R": {
+    "headsign": "Broad St"
+  },
+  "JN43R": {
+    "headsign": "Broadway Jct"
+  },
+  "JN45R": {
+    "headsign": "Jamaica Center - Parsons/Archer"
+  },
+  "JS54R": {
+    "headsign": "Broad St"
+  },
+  "JN49R": {
+    "headsign": "Jamaica Center - Parsons/Archer"
+  },
+  "ZS16R": {
+    "headsign": "Broad St"
+  },
+  "ZN47R": {
+    "headsign": "Jamaica Center - Parsons/Archer"
+  },
+  "LN01R": {
+    "headsign": "8 Av"
+  },
+  "LS01R": {
+    "headsign": "Canarsie - Rockaway Pkwy"
+  },
+  "LN02R": {
+    "headsign": "8 Av"
+  },
+  "LS05R": {
+    "headsign": "Myrtle - Wyckoff Avs"
+  },
+  "LN05R": {
+    "headsign": "8 Av"
+  },
+  "MS35R": {
+    "headsign": "Middle Village - Metropolitan Av"
+  },
+  "MN35R": {
+    "headsign": "Myrtle Av"
+  },
+  "MN37R": {
+    "headsign": "Essex St"
+  },
+  "MS37R": {
+    "headsign": "Middle Village - Metropolitan Av"
+  },
+  "MS30R": {
+    "headsign": "Middle Village - Metropolitan Av"
+  },
+  "MN30R": {
+    "headsign": "Myrtle Av"
+  },
+  "MN20R": {
+    "headsign": "Forest Hills - 71 Av"
+  },
+  "MS20R": {
+    "headsign": "Middle Village - Metropolitan Av"
+  },
+  "NS20R": {
+    "headsign": "Coney Island - Stillwell Av"
+  },
+  "NN20R": {
+    "headsign": "Astoria - Ditmars Blvd"
+  },
+  "NN23R": {
+    "headsign": "Astoria - Ditmars Blvd"
+  },
+  "NN27R": {
+    "headsign": "Astoria - Ditmars Blvd"
+  },
+  "NS27R": {
+    "headsign": "Coney Island - Stillwell Av"
+  },
+  "NN31R": {
+    "headsign": "Astoria - Ditmars Blvd"
+  },
+  "NN42R": {
+    "headsign": "Astoria - Ditmars Blvd"
+  },
+  "NS31R": {
+    "headsign": "Coney Island - Stillwell Av"
+  },
+  "NN47R": {
+    "headsign": "Astoria - Ditmars Blvd"
+  },
+  "NS42R": {
+    "headsign": "Coney Island - Stillwell Av"
+  },
+  "NS38R": {
+    "headsign": "86 St"
+  },
+  "NS11R": {
+    "headsign": "Coney Island - Stillwell Av"
+  },
+  "QN65R": {
+    "headsign": "96 St"
+  },
+  "QN69R": {
+    "headsign": "96 St"
+  },
+  "WS72R": {
+    "headsign": "Whitehall St"
+  },
+  "WN70R": {
+    "headsign": "Astoria - Ditmars Blvd"
+  },
+  "WN72R": {
+    "headsign": "Astoria - Ditmars Blvd"
+  },
+  "WS70R": {
+    "headsign": "86 St"
+  },
+  "QS19R": {
+    "headsign": "Coney Island - Stillwell Av"
+  },
+  "QN19R": {
+    "headsign": "96 St"
+  },
+  "QN16R": {
+    "headsign": "96 St"
+  },
+  "QS16R": {
+    "headsign": "Coney Island - Stillwell Av"
+  },
+  "RS27R": {
+    "headsign": "Bay Ridge - 95 St"
+  },
+  "RN27R": {
+    "headsign": "Whitehall St"
+  },
+  "RS71R": {
+    "headsign": "Bay Ridge - 95 St"
+  },
+  "RN93R": {
+    "headsign": "Forest Hills - 71 Av"
+  },
+  "RS36R": {
+    "headsign": "Bay Ridge - 95 St"
+  },
+  "RN76R": {
+    "headsign": "96 St"
+  },
+  "RS98R": {
+    "headsign": "59 St"
+  },
+  "RN96R": {
+    "headsign": "Forest Hills - 71 Av"
+  },
+  "SIS03R": {
+    "headsign": "Tottenville"
+  },
+  "SIN03R": {
+    "headsign": "St George"
+  },
+  "SIN28R": {
+    "headsign": "St George"
+  },
+  "SIN16R": {
+    "headsign": "St George"
+  },
+  "SIS07R": {
+    "headsign": "Tottenville"
+  },
+  "SIS02R": {
+    "headsign": "Great Kills"
+  },
+  "SIN02R": {
+    "headsign": "St George"
+  }
+}

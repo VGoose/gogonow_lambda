@@ -1,15 +1,14 @@
 const router = require('express').Router();
-const readGTFSRT = require('../../scripts/readGTFSRT');
+const getArrivalTimes = require('../../scripts/getArrivalTimes');
 
 const StopTimes = require('../../models/Stop_Times');
 
 
 router.get('/', (req, res) => {
-  readGTFSRT().then(
+  getArrivalTimes().then(
     data => res.json(data),
     error => res.send(error)
   )
-  
 })
 
 router.post('/', (req, res) => {
