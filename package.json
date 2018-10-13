@@ -14,7 +14,11 @@
   "author": "Anh Vo",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^1.18.4"
+    "css-loader": "^1.0.0",
+    "node-sass": "^4.9.3",
+    "nodemon": "^1.18.4",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1"
   },
   "dependencies": {
     "axios": "^0.18.0",
