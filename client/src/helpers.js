@@ -6,7 +6,7 @@ async function getStations() {
 	let userLat = position.coords.latitude;
 	let userLon = position.coords.longitude;
 	let x, y, dist;
-
+	const dists = new Set();
 	let _stations = [];
 	for (let key in stations) {
 		let stopLat = parseFloat(stations[key].stop_lat);
@@ -15,9 +15,10 @@ async function getStations() {
 		x = diff(userLat, stopLat) * 69.05;
 		y = diff(userLon, stopLon) * 52.35;
 		dist = getEuclideanDist(x, y); 
-		if(dist < 0.5) {
+		if(dist < 0.5 && !dists.has(dist)) {
 			stations[key].dist = dist;
 			_stations.push(stations[key])
+			dists.add(dist)
 		}
 	}
 	_stations.sort((a, b) => {

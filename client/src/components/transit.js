@@ -31,22 +31,24 @@ class Transit extends React.Component {
   }
 
   getSchedule = (id) => {
-    // console.log(this.props.schedule[id])
+    // console.log(this.props.schedule[id + 'N'])
   }
 
   render() {
     const { stations } = this.state;
-    if(!stations) {
+    if (!stations) {
       return (
         <div className="transit-container">
           <TopBar page="Transit" />
           <hr></hr>
         </div>
-      ) 
+      )
     }
-    let stationButtons = stations.map((station) => {
-      return <button onClick={this.getSchedule(station.stop_id)}>{station.stop_name}</button>
-    })
+    let stationButtons = stations ?
+      stations
+        .map((station) => {
+        return <button onClick={() => this.getSchedule(station.stop_id)}>{station.stop_name}</button>
+      }) : 'Loading';
 
     return (
       <div className="transit-container">
@@ -66,7 +68,7 @@ function mapStateToProps(state) {
     user: state.users.users,
     userLoading: state.users.loading,
     schedule: state.schedules.schedules,
-    loading: state.schedules.loading,
+    scheduleLoading: state.schedules.loading,
   }
 }
 
