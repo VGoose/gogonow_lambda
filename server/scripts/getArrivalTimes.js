@@ -22,11 +22,10 @@ async function getArrivalTimes() {
   const output = {};
   try {
     let feed = await getFeed();
-    feed.entity.forEach(function(entity) {
+    'entity' in feed && feed.entity.forEach(function(entity) {
       if (entity.trip_update) {
         let trip = entity.trip_update.stop_time_update;
         //trip_id is formatted "090400_1..S03R"
-        let tripId = entity.trip_update.trip.trip_id;
         let train = entity.trip_update.trip.trip_id.split('..')[0].slice(-1)[0];
         let pathId = entity.trip_update.trip.trip_id.split('..')[1];
         if (!pathId || pathId.length === 1){
@@ -61,6 +60,5 @@ async function getArrivalTimes() {
   return output;
 }
 
-getArrivalTimes();
 module.exports = getArrivalTimes;
 
