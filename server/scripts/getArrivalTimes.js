@@ -1,4 +1,4 @@
-const STOPS_DATA = require('./static/stops.json');
+const STOPS_DATA = require('./static/stations.json');
 const HEADSIGNS_DATA = require('./static/headsigns.json');
 
 var GtfsRealtimeBindings = require('gtfs-realtime-bindings');
