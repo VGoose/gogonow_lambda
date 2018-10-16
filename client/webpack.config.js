@@ -4,6 +4,9 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
   devtool: 'inline-cheap-module-source-map',
+  devServer: {
+    historyApiFallback: true,
+  },
   mode: 'development',
   entry: {
     bundle: './src/index.js',
@@ -11,6 +14,7 @@ const config = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[chunkhash].js',
+    publicPath: '/',
   },
   module: {
     //babel configuration
