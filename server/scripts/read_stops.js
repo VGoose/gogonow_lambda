@@ -20,7 +20,7 @@ const { promisify } = require('util');
 		}
 	}
 
-	fs.writeFile('server/scripts/static/stops.JSON', JSON.stringify(stops), 'utf8', (error) => {
+	fs.writeFile('server/scripts/static/stations.JSON', JSON.stringify(stops), 'utf8', (error) => {
 		if (error) throw error;
 		console.log('data written');
 	})

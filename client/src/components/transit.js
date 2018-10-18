@@ -9,7 +9,7 @@ import { getStations } from '../helpers';
 //components
 import Toggle from './reusable/toggle';
 import TopBar from './top_bar';
-import TransitStation from './transit_station';
+import CountdownClock from './countdown_clock';
 
 class Transit extends React.Component {
   state = {
@@ -31,24 +31,29 @@ class Transit extends React.Component {
   }
 
   getSchedule = (id) => {
-    // console.log(this.props.schedule[id + 'N'])
+    // console.log(this.props.schedules[id + 'N'])
   }
-
+  addToFavorites = (id) => {
+    console.log('favorited' + id)
+  }
   render() {
     const { stations } = this.state;
-    if (!stations) {
-      return (
-        <div className="transit-container">
-          <TopBar page="Transit" />
-          <hr></hr>
-        </div>
-      )
-    }
-    let stationButtons = stations ?
-      stations
-        .map((station) => {
-        return <button onClick={() => this.getSchedule(station.stop_id)}>{station.stop_name}</button>
-      }) : 'Loading';
+    let stationButtons = stations && !this.props.schedulesLoading ?
+      stations.map((station) => {
+        return (
+          <CountdownClock
+            key={station.stop_id}
+            id={station.stop_id}
+            favorite={this.addToFavorites}
+            schedules={[
+              //schedule keys are stop_id + N/S for north/south
+              ...this.props.schedules[station.stop_id + 'N'],
+              ...this.props.schedules[station.stop_id + 'S']
+            ]}
+            name={station.stop_name}
+          />
+        )
+      }) : 'Loading...';
 
     return (
       <div className="transit-container">
@@ -67,8 +72,8 @@ function mapStateToProps(state) {
   return {
     user: state.users.users,
     userLoading: state.users.loading,
-    schedule: state.schedules.schedules,
-    scheduleLoading: state.schedules.loading,
+    schedules: state.schedules.schedules,
+    schedulesLoading: state.schedules.loading,
   }
 }
 

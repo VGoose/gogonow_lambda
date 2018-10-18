@@ -1,0 +1,56 @@
+@import 'variables';
+
+.transit-container {
+
+}
+
+.countdownclock-container {
+  background-color: #F4F4F4;
+  border: 2px solid $tertiaryColor;
+  border-radius: 20px;
+  margin-bottom: 5px;
+}
+
+//bar
+.countdownclock__bar {
+  display: flex;
+  align-items: center;
+}
+.countdownclock__name {
+  background-color: gold;
+  flex: 50%;
+}
+.countdownclock__star {
+  background-color: aqua;
+  flex: 25%;
+}
+.countdownclock__star img{
+  height: 50px;
+}
+.countdownclock__badges {
+  background-color: mediumpurple;
+  width: 25%;
+  display: flex;
+}
+.countdownclock__badge {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+//row
+.countdownclock__toggle{
+  display: block;
+}
+.countdownclock__row {
+  display: flex;
+}
+.countdownclock__train {
+  width: 10%;
+}
+.countdownclock__headsign {
+  width: 70%;
+}
+.countdownclock__time {
+  width: 20%;
+}

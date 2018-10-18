@@ -7,14 +7,19 @@ export default class Toggle extends React.Component {
   }
 
   toggle = () => {
-    this.setState({ show: !show })
+    this.setState((prevState ) => { 
+      return { show : !prevState.show }
+    })
   }
 
   render() {
     const { children } = this.props;
-    return children({
-      show: this.state.show,
-      toggle: this.toggle,
-    })
+    const { show } = this.state
+    const { toggle } = this;
+    return (
+      <div>
+        {children({ show, toggle })}
+      </div>
+    )
   }
 }

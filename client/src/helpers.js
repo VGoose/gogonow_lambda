@@ -1,4 +1,4 @@
-import stations from './stops.JSON';
+import STATIONS from './stations.json';
 import { diff, findClosestIndex, getEuclideanDist } from './utils/helpers';
 
 async function getStations() {
@@ -8,16 +8,16 @@ async function getStations() {
 	let x, y, dist;
 	const dists = new Set();
 	let _stations = [];
-	for (let key in stations) {
-		let stopLat = parseFloat(stations[key].stop_lat);
-		let stopLon = parseFloat(stations[key].stop_lon);
+	for (let key in STATIONS) {
+		let stopLat = parseFloat(STATIONS[key].stop_lat);
+		let stopLon = parseFloat(STATIONS[key].stop_lon);
 		//constants are rough estimates of miles per degree of lat/lon for NYC
 		x = diff(userLat, stopLat) * 69.05;
 		y = diff(userLon, stopLon) * 52.35;
 		dist = getEuclideanDist(x, y); 
 		if(dist < 0.5 && !dists.has(dist)) {
-			stations[key].dist = dist;
-			_stations.push(stations[key])
+			STATIONS[key].dist = dist;
+			_stations.push(STATIONS[key])
 			dists.add(dist)
 		}
 	}

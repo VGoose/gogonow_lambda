@@ -3,6 +3,7 @@
 @import 'transitions';
 
 @import 'navbar';
+@import 'transit';
 
 body {
   font-family: $fontStack;
@@ -16,5 +17,6 @@ body {
 .top-bar {
   display: flex;
   justify-content: space-between;
+  background-color: $primaryColor;
 }
 
