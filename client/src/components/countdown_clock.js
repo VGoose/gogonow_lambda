@@ -60,7 +60,7 @@ const Row = ({ schedule, index }) => {
         return (
           <div
             className="countdownclock__row"
-            style={{ backgroundColor: index % 2 == 0 ? '#D5D9DA' : '#FFFFFFF' }}
+            style={{ backgroundColor: index % 2 == 1 ? '#D5D9DA' : '#FFFFFF' }}
           >
             <div className="countdownclock__train"><Badge train={schedule.train} /></div>
             <div className="countdownclock__headsign">{schedule.headsign}</div>
