@@ -3,7 +3,7 @@ import { GET_SCHEDULES, SCHEDULE_LOADING } from './types';
 
 export const getSchedules = () => (dispatch, getState) => {
     dispatch(setScheduleLoading());
-    axios.get(`http://localhost:5000/api/stop_times/`)
+    axios.get(`http://localhost:5000/api/schedules/`)
     .then(res => {
       dispatch({
           type: GET_SCHEDULES,
