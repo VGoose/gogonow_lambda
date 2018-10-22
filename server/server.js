@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const user = require('./routes/api/user');
-const stopTimes = require('./routes/api/stop_times');
+const schedules = require('./routes/api/schedules');
 
 const app = express();
 
@@ -24,7 +24,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
 app.use('/api/user/', user);
-app.use('/api/stop_times/', stopTimes);
+app.use('/api/schedules/', schedules);
 
 
 const port = process.env.PORT || 5000;

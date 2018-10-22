@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const getArrivalTimes = require('../../scripts/getArrivalTimes');
+const getArrivalTimes = require('../../scripts/get_schedules');
 
 const StopTimes = require('../../models/Stop_Times');
 
