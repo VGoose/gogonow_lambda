@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Toggle from './reusable/toggle';
+import Time from './reusable/time';
 
 import STATIONS from '../stations.json';
 
@@ -50,47 +51,57 @@ const Badge = ({ train }) => {
 }
 
 const Row = ({ schedule, index }) => {
-  let seconds = Math.floor((new Date(schedule.time) - new Date())/1000) ;
-  let minutes = (seconds / 60) > 1 ? Math.floor(seconds / 60) : 'Now'
-
   return (
-    <div
-      className="countdownclock__row"
-      style={{ backgroundColor: index % 2 == 0 ? '#F5F9FA' : '#FFFFFFF' }}
-    >
-      <div className="countdownclock__train"><Badge train={schedule.train} /></div>
-      <div className="countdownclock__headsign">{schedule.headsign}</div>
-      <div className="countdownclock__time">{minutes} {minutes == 'Now' ? null : 'min'}</div>
-    </div>
+    <Time>
+      {({ time }) => {
+        let seconds = Math.floor((new Date(schedule.time) - time) / 1000);
+        let minutes = Math.floor(seconds / 60);
+        let countdown = seconds > 60 ? minutes : seconds > 30 ? seconds : 'now';
+        return (
+          <div
+            className="countdownclock__row"
+            style={{ backgroundColor: index % 2 == 0 ? '#D5D9DA' : '#FFFFFFF' }}
+          >
+            <div className="countdownclock__train"><Badge train={schedule.train} /></div>
+            <div className="countdownclock__headsign">{schedule.headsign}</div>
+            <div className="countdownclock__time">{countdown} {seconds > 60 ? 'min' : Number.isInteger(seconds) && seconds > 30 ? 'sec' : null}</div>
+          </div>)
+      }}
+    </Time>
   )
 }
 
 const CountdownClock = ({ name, schedules, favorite, id }) => {
-  let rows = schedules
-    .sort((a, b) => new Date(a.time) - new Date(b.time))
-    .map((schedule, index) => index < 3 && (new Date(schedule.time) - new Date()) > 0 ? 
-      <Row key={schedule.train + schedule.direction + schedule.time} schedule={schedule} index={index} />
-      : null
-      )
   let badges = STATIONS[id].trains
     .map(train => <Badge key={train} train={train} />)
   return (
     <Toggle>
       {({ show, toggle }) =>
-        <div className="countdownclock-container">
-          <div className="countdownclock__bar">
-            <div className="countdownclock__name" onClick={toggle}>{name}</div>
-            <div className="countdownclock__badges">
-              {badges}
-            </div>
-            <div className="countdownclock__star">
-              <Star favorite={favorite} id={id} />
-            </div>
-          </div>
-          {show ? <div className="countdownclock__toggle">
-            {rows}
-          </div> : null}
-        </div>
+        <Time>
+          {({ time }) => {
+            let rows = schedules
+              .filter(schedule => new Date(schedule.time) - time > 0)
+              .sort((a, b) => new Date(a.time) - new Date(b.time))
+              .map((schedule, index) => (
+                <Row key={schedule.train + schedule.direction + schedule.time} schedule={schedule} index={index} />
+              ))
+            return (
+              <div className="countdownclock-container">
+                <div className="countdownclock__bar">
+                  <div className="countdownclock__name" onClick={toggle}>{name}</div>
+                  <div className="countdownclock__badges">
+                    {badges}
+                  </div>
+                  <div className="countdownclock__star">
+                    <Star favorite={favorite} id={id} />
+                  </div>
+                </div>
+                {show ? <div className="countdownclock__toggle">
+                  {rows.slice(0, 3)}
+                </div> : null}
+              </div>)
+          }}
+        </Time>
       }
     </Toggle>
 

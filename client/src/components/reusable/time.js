@@ -29,12 +29,13 @@ export default class Time extends React.Component {
   }
 
   render() {
+    const { time } = this.state;
     const { children } = this.props;
     const { getTimeHHMM, getTimeHHMMMilitary } = this;
 
     return (
       <div>
-        {children({ getTimeHHMM, getTimeHHMMMilitary, })}
+        {children({ time, getTimeHHMM, getTimeHHMMMilitary, })}
       </div>
     )
   }

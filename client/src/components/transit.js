@@ -38,17 +38,21 @@ class Transit extends React.Component {
   }
   render() {
     const { stations } = this.state;
-    let stationButtons = stations && !this.props.schedulesLoading ?
+    const { schedules, schedulesLoading } = this.props;
+  
+    let stationButtons = (stations && !schedulesLoading) ?
       stations.map((station) => {
+        //keys in schedules are stop_id + N/S
+        let northSchedule = station.stop_id + 'N' in schedules ? schedules[station.stop_id + 'N'] : [];
+        let southSchedule = station.stop_id + 'S' in schedules ? schedules[station.stop_id + 'S'] : [];
         return (
           <CountdownClock
             key={station.stop_id}
             id={station.stop_id}
             favorite={this.addToFavorites}
             schedules={[
-              //schedule keys are stop_id + N/S for north/south
-              ...this.props.schedules[station.stop_id + 'N'],
-              ...this.props.schedules[station.stop_id + 'S']
+              ...northSchedule,
+              ...southSchedule
             ]}
             name={station.stop_name}
           />

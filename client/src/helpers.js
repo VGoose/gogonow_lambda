@@ -14,8 +14,12 @@ async function getStations() {
 		//constants are rough estimates of miles per degree of lat/lon for NYC
 		x = diff(userLat, stopLat) * 69.05;
 		y = diff(userLon, stopLon) * 52.35;
-		dist = getEuclideanDist(x, y); 
-		if(dist < 0.5 && !dists.has(dist)) {
+		dist = getEuclideanDist(x, y);
+		//removing N/S stations, same info as parent station
+		if (dist < 0.5
+			&& key.split('').slice(-1)[0] !== 'N'
+			&& key.split('').slice(-1)[0] !== 'S') {
+
 			STATIONS[key].dist = dist;
 			_stations.push(STATIONS[key])
 			dists.add(dist)
@@ -38,6 +42,6 @@ function getUserPosition() {
 }
 
 module.exports = {
-  getStations,
+	getStations,
 	getUserPosition,
 }
