@@ -3,6 +3,10 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+//auth
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+
 const user = require('./routes/api/user');
 const schedules = require('./routes/api/schedules');
 
