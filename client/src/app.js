@@ -6,8 +6,10 @@ import store from '../store';
 
 import Home from './components/home';
 import Transit from './components/transit';
-import NavBar from './components/nav-bar';
-import AddUser from './components/add_user';
+import Login from './components/login';
+import Register from './components/register';
+
+import NavBar from './components/nav_bar';
 
 import '../scss/base.scss';
 
@@ -20,6 +22,8 @@ export default class App extends React.Component {
             <Switch>
               <Route path="/" exact component={Home} />
               <Route path="/transit" exact component={Transit} />
+              <Route path="/login" component={Login} />
+              <Route path="/register" component={Register} />
             </Switch>
             <NavBar />
           </div>
