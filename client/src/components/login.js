@@ -6,11 +6,12 @@ import TopBar from './top_bar';
 const Login = () => {
   return (
     <div className="login-container">
-      <TopBar page="Login" />
       <h3>
         Please sign in
       </h3>
       <Formik
+        validateOnChange={false}
+        validateOnBlur={false}
         initialValues={{ email: '', password: '' }}
         validate={values => {
           let errors = {};
@@ -23,7 +24,7 @@ const Login = () => {
           }
           if (!values.password) {
             errors.password = 'Required';
-          } 
+          }
           return errors;
         }}
         onSubmit={(values, { setSubmitting }) => {
@@ -44,24 +45,28 @@ const Login = () => {
           /* and other goodies */
         }) => (
             <form onSubmit={handleSubmit}>
+              <label>Email</label>
               <input
+                className={errors.email ? "form-control is-invalid" : "form-control"}
                 type="email"
                 name="email"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.email}
               />
-              {errors.email && touched.email && <div>{errors.email}</div>}
+              {errors.email && <div className="text-warning">{errors.email}</div>}
+              <label>Password</label>
               <input
+                className={errors.password ? "form-control is-invalid" : "form-control"}
                 type="password"
                 name="password"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.password}
               />
-              {errors.password && touched.password && <div>{errors.password}</div>}
-              <button type="submit" disabled={isSubmitting}>
-                Submit
+              {errors.password && <div className="text-warning">{errors.password}</div>}
+              <button className="btn btn-lg btn-primary btn-block mt-3" type="submit" disabled={isSubmitting}>
+                Login
           </button>
             </form>
           )}

@@ -6,7 +6,7 @@ import '../../scss/base.scss';
 const NavItem = ({ path, name }) => {
   return (
     <NavLink
-      className="navbar__button"
+      className="text-muted navbar__button"
       activeClassName="navbar__button--selected"
       exact 
       to={path}>
@@ -17,7 +17,7 @@ const NavItem = ({ path, name }) => {
 
 const NavBar = () => {
   return (
-    <div className="navbar">
+    <div className="navbar bg-light">
       <NavItem path="/" name="Home" />
       <NavItem path="/transit" name="Transit" />
       <NavItem path="/weather" name="Weather" />

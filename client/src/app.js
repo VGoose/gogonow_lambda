@@ -19,13 +19,15 @@ export default class App extends React.Component {
       <Provider store={store} >
         <Router>
           <div className="container">
+          <NavBar />
+          <hr></hr>
             <Switch>
               <Route path="/" exact component={Home} />
               <Route path="/transit" exact component={Transit} />
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
             </Switch>
-            <NavBar />
+            
           </div>
         </Router>
       </Provider>
