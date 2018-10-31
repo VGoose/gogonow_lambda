@@ -8,6 +8,8 @@ const Home = () => {
     <div className="home-container">
       <TopBar page="Home" />
       <hr></hr>
+      <div className="home__content">
+      </div>
     </div>
   )
 }
