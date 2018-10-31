@@ -45,6 +45,7 @@ async function getArrivalTimes() {
           let time = stop.arrival ? new Date(parseInt(stop.arrival.time) * 1000).toString() : null;
           if (output[stationId]) {
             output[stationId].push({
+              stopId: stationId,
               train: train,
               direction: direction,
               headsign: headsign,
@@ -52,6 +53,7 @@ async function getArrivalTimes() {
             })
           } else {
             output[stationId] = [{
+              stopId: stationId,
               train: train,
               direction: direction,
               headsign: headsign,

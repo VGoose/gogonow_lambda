@@ -1,12 +1,17 @@
 const router = require('express').Router();
 const getArrivalTimes = require('../../scripts/get_schedules');
 
-const StopTimes = require('../../models/Stop_Times');
+const Schedules = require('../../models/Schedules');
 
+let query; 
 
 router.get('/', (req, res) => {
   getArrivalTimes().then(
-    data => res.json(data),
+    data => { 
+      query = Schedules.findByIdAndUpdate('5bd75e39e819ae36c704f42a', { time: new Date(), schedule: data }, { new: true});
+      query.select('schedule')
+        .exec((schedule) => res.send())
+    },
     error => res.send(error)
   )
 })
