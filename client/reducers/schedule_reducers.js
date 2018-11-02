@@ -13,7 +13,7 @@ export default function (state = initialState, action) {
 		case GET_SCHEDULES:
 			return {
 				...state,
-				schedules: action.payload,
+				schedules: action.payload.schedule,
 				loading: false
 			}
 		case SCHEDULE_LOADING:

@@ -3,14 +3,16 @@ const getArrivalTimes = require('../../scripts/get_schedules');
 
 const Schedules = require('../../models/Schedules');
 
-let query; 
+let query;
 
 router.get('/', (req, res) => {
   getArrivalTimes().then(
-    data => { 
-      query = Schedules.findByIdAndUpdate('5bd75e39e819ae36c704f42a', { time: new Date(), schedule: data }, { new: true});
+    data => {
+      query = Schedules.findByIdAndUpdate('5bd75e39e819ae36c704f42a', { time: new Date(), schedule: data }, { new: true });
       query.select('schedule')
-        .exec((schedule) => res.send())
+        .exec()
+          .then(schedule => res.send(JSON.stringify(schedule)))
+          .catch(error => res.send(JSON.stringify(error)))
     },
     error => res.send(error)
   )
