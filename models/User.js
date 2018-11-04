@@ -22,5 +22,10 @@ let UserSchema = new Schema(
     favorite_stations: [String]
   }
 )
-
 module.exports = User = mongoose.model('user', UserSchema);
+
+//query db, return a promise
+User.getUserByUsername = username => {
+  let query = { username: username }
+  User.findOne(query)
+}
