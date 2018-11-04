@@ -49,7 +49,7 @@ const Register = () => {
           isSubmitting,
           /* and other goodies */
         }) => (
-            <form className="" onSubmit={handleSubmit}>
+            <form method="post" action="" className="" onSubmit={handleSubmit}>
               <label>Username</label>
               <input
                 className={errors.username ? "form-control is-invalid" : "form-control"}
