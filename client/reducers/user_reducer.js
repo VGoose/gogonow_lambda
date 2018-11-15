@@ -1,47 +1,40 @@
 import {
-    GET_USERS,
-    UPDATE_USER,
-    DELETE_USER,
-    ADD_USER,
-    USERS_LOADING
+    USER_UPDATE,
+    USER_LOADING,
+    USER_GET_DATA,
+    USER_AUTH,
 } from '../actions/types';
 
 const initialState = {
-    users: [],
-    loading: false
+    isAuth: false,
+    data: {},
+    isLoading: false, 
 };
 
 export default function (state = initialState, action) {
     switch (action.type) {
-        case GET_USERS:
+        case USER_AUTH:
             return {
                 ...state,
-                users: action.payload,
-                loading: false
+                isAuth: action.payload,
+                isLoading: false
             }
-        case ADD_USER:
+        case USER_GET_DATA:
             return {
                 ...state,
-                users: [action.payload, ...state.users]
+                data: action.payload,
+                isLoading: false
             }
-        case DELETE_USER:
+        case USER_UPDATE:
             return {
                 ...state,
-                users: state.users.filter(user => user._id !== action.payload)
+                data: action.payload,
+                isLoading: false
             }
-        case UPDATE_USER:
+        case USER_LOADING:
             return {
                 ...state,
-                users: state.users.map(user => {
-                    if (user._id === action.payload._id) {
-                        return action.payload;
-                    }
-                })
-            }
-        case USERS_LOADING:
-            return {
-                ...state,
-                loading: true
+                isLoading: true
             }
         default:
             return state;

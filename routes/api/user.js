@@ -1,58 +1,67 @@
 const router = require('express').Router();
-const passport = require('passport');
-const LocalStrategy = require('passport').Strategy;
 
 const User = require('../../models/User');
+const jwt = require('jsonwebtoken');
 
-router.get('/register', (req, res) => {
-  res.json('register route');
-})
 
-router.get('/login', (req, res) => {
-  res.json('login route');
-})
-
-router.post('/register', (req, res) => {
-  let userName = req.body.userName;
+router.post('/register', (req, res, next) => {
+  let username = req.body.username;
   let email = req.body.email;
   let password = req.body.password;
+
+  //check for taken names/emails
+  User.findOne({ username: username }).exec()
+    .then(user => {
+      if (user) {
+        res.redirect('/register');
+      }
+    })
+  User.findOne({ email: email }).exec()
+    .then(user => {
+      if (user) {
+        res.redirect('/register');
+      }
+    })
+
+  var newUser = new User({
+    email: email,
+    username: username,
+    password: password
+  });
+
+  //call next on /login and provide all credentials, let /login redirect
+  User.createNewUser(newUser)
+    .then(user => res.send(user))
+    .catch(error => res.send(error))
 })
 
-passport.use(new LocalStrategy(
-  function (username, password, done) {
-    User.getUserByUsername(username)
-      .then()
-      
-      , function (err, user) {
-      if (err) throw err;
-      if (!user) {
-        return done(null, false, { message: 'Unknown User' });
-      }
+router.post('/login', (req, res) => {
+  let password = req.body.password;
+  let email = req.body.email;
+  User.getUserByEmail(email)
+    .then(user => User.comparePassword(password, user.password)
+      .then(isMatch => isMatch
+        ? jwt.sign({ user }, 'abcdsfewasdbeqpiuwqfdsafjeksdlsdfj ', {/*TODO*/ }, (error, token) => {
+          return error ? res.json({ error }) : res.json({ token })
+        })
+        : res.json({ error: 'invalid credentials' }))
+      .catch(error => res.json({ error }))
+    )
+    .catch(error => res.json({ error }))
+})
 
-      User.comparePassword(password, user.password, function (err, isMatch) {
-        if (err) throw err;
-        if (isMatch) {
-          return done(null, user);
-        } else {
-          return done(null, false, { message: 'Invalid password' });
-        }
-      });
-    });
-  })
-);
+router.get('/status', (req, res) => {
+  //TODO
+  res.send(true)
+})
 
+router.get('/data', (req, res) => {
+  //TODO
+  //return user.data from db 
+  //how to get user id? req.userId -- doesn't work
+  console.log(req.user);
+  res.json(req.user)
 
-// router.get('/', (req, res) => {
-//   User.find()
-//     .then(users => res.json(users))
-// })
-
-// router.post('/', (req, res) => {
-//   const newUser = new User({
-//     name: req.body.name
-//   });
-
-//   newUser.save().then(user => res.json(user));
-// })
+})
 
 module.exports = router;

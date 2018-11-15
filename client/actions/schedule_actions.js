@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { GET_SCHEDULES, SCHEDULE_LOADING } from './types';
+import { SCHEDULE_GET, SCHEDULE_LOADING } from './types';
 
-export const getSchedules = () => (dispatch, getState) => {
+export const schedulesGet = () => (dispatch, getState) => {
     dispatch(setScheduleLoading());
     axios.get(`http://localhost:5000/api/schedules/`)
     .then(res => {
       dispatch({
-          type: GET_SCHEDULES,
+          type: SCHEDULE_GET,
           payload: res.data
       })
     })

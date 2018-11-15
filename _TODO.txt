@@ -1,0 +1,4 @@
+net::ERR_CONNECTION_REFUSED
+    sometimes server responds
+
+HTTPS 

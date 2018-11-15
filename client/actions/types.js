@@ -1,10 +1,10 @@
 //USERS
-export const GET_USERS = 'GET_USERS';
-export const DELETE_USER = 'DELETE_USER';
-export const ADD_USER = 'ADD_USER';
-export const UPDATE_USER = 'UPDATE_USER';
-export const USERS_LOADING = 'USERS_LOADING';
+export const USER_LOGIN = 'USER_LOGIN';
+export const USER_AUTH = 'USER_AUTH';
+export const USER_GET_DATA = 'USER_GET_DATA';
+export const USER_UPDATE = 'USER_UPDATE';
+export const USER_LOADING = 'USER_LOADING';
 
 //SCHEDULES
-export const GET_SCHEDULES = 'GET_SCHEDULES';
+export const SCHEDULES_GET = 'SCHEDULES_GET';
 export const SCHEDULE_LOADING = 'SCHEDULE_LOADING';

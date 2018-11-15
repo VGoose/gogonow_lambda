@@ -1,7 +1,9 @@
 import React from 'react';
 import { Formik } from 'formik';
+import axios from 'axios';
 
 import TopBar from './top_bar';
+import { userAuth, userSetLoading } from '../../actions/user_actions';
 
 const Register = () => {
   return (
@@ -31,18 +33,23 @@ const Register = () => {
             errors.username = 'Required';
           }
           return errors;
-        }}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
+        }}  
+        onSubmit={(values, { setSubmitting }) => { 
+          //create action for this 
+          axios.post('http://localhost:5000/api/user/register',{
+            username: values.username,
+            email: values.email,
+            password: values.password
+          })
+            .then(user => {
+              setSubmitting(false)
+              
+            })
         }}
       >
         {({
           values,
           errors,
-          touched,
           handleChange,
           handleBlur,
           handleSubmit,

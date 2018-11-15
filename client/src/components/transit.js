@@ -1,8 +1,7 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import { getUsers, setUsersLoading } from '../../actions/user_actions';
-import { getSchedules } from '../../actions/schedule_actions';
+import { schedulesGet } from '../../actions/schedule_actions';
 
 import { getStations } from '../helpers';
 
@@ -16,7 +15,7 @@ class Transit extends React.Component {
     stations: null,
   }
   componentDidMount() {
-    this.props.getSchedules();
+    this.props.schedulesGet();
     navigator.geolocation ?
       this.loadClosestStations() : alert('Your browser does not have geolocation');
 
@@ -29,22 +28,18 @@ class Transit extends React.Component {
       console.log(error);
     }
   }
-
-  getSchedule = (id) => {
-    // console.log(this.props.schedules[id + 'N'])
-  }
   addToFavorites = (id) => {
     console.log('favorited' + id)
   }
   render() {
     const { stations } = this.state;
     const { schedules, schedulesLoading } = this.props;
-  
+    let northSchedule, southSchedule;
     let stationButtons = (stations && !schedulesLoading) ?
       stations.map((station) => {
         //keys in schedules are stop_id + N/S
-        let northSchedule = station.stop_id + 'N' in schedules ? schedules[station.stop_id + 'N'] : [];
-        let southSchedule = station.stop_id + 'S' in schedules ? schedules[station.stop_id + 'S'] : [];
+        northSchedule = station.stop_id + 'N' in schedules ? schedules[station.stop_id + 'N'] : [];
+        southSchedule = station.stop_id + 'S' in schedules ? schedules[station.stop_id + 'S'] : [];
         return (
           <CountdownClock
             key={station.stop_id}
@@ -74,7 +69,7 @@ class Transit extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    user: state.users.users,
+
     userLoading: state.users.loading,
     schedules: state.schedules.schedules,
     schedulesLoading: state.schedules.loading,
@@ -84,7 +79,6 @@ function mapStateToProps(state) {
 export default connect(
   mapStateToProps,
   {
-    getUsers,
-    getSchedules
+    schedulesGet
   }
 )(Transit);

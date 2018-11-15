@@ -1,41 +1,81 @@
-import axios from 'axios';
-import { GET_USERS, ADD_USER, DELETE_USER, UPDATE_USER, USERS_LOADING } from './types';
+import axios from '../src/utils/axios';
+import { USER_LOGIN, USER_AUTH, USER_UPDATE, USER_LOADING, USER_GET_DATA } from './types';
 
-export const getUsers = () => (dispatch, getState) => {
-    dispatch(setUsersLoading());
-    axios.get('http://localhost:5000/api/user')
-    .then(res => {
-      dispatch({
-          type: GET_USERS,
-          payload: res.data
-      })
-    })
-    .catch(err => console.log(err))
+export const userLogin = () => (dispatch, getState) => {
+	dispatch(userSetLoading());
+	axios.get('/api/user/login') 
+		.then(res => {
+			if (res.status === 404) {
+				//TODO
+			}
+			dispatch({
+				type: USER_LOGIN,
+				payload: res.data,
+			})
+		}) 
 }
 
-export const addUser = () => {
-    return { 
-        type: ADD_USER,
-        payload: 'addUser'
-    }
+export const userAuth = () => (dispatch, getState) => {
+	dispatch(userSetLoading());
+	axios.get('/api/user/status') 
+		.then(res => {
+			if (res.status === 404) {
+				//TODO
+			}
+			dispatch({
+				type: USER_AUTH,
+				payload: res.data,
+			})
+		}) 
 }
 
-export const deleteUser = () => {
-    return { 
-        type: DELETE_USER,
-        payload: 'deleteUser'
-    }
+export const userGetData = () => (dispatch, getState) => {
+	dispatch(userSetLoading());
+	axios.get('/api/user/data') 
+		.then(res => {
+			if (res.status === 401 || 403) {
+				dispatch(userAuth());
+			}
+			dispatch({
+				type: USER_GET_DATA,
+				payload: res.data,
+			})
+		}) 
+		.catch(err => {
+			console.log(err);
+		})
+}
+export const userAddStation = (station) => (dispatch, getState) =>{
+
+	axios.post('/api/user/updatestation', { station, add: true })
+		.then(res => {
+			if (res.status === 401 || 403) {
+				dispatch(userAuth());
+			}
+			dispatch({
+				type: USER_UPDATE,
+				payload: res.data
+			})
+		})
 }
 
-export const updateUser = () => {
-    return { 
-        type: UPDATE_USER,
-        payload: 'updateUser'
-    }
+export const userRemoveStation = (station) =>(dispatch, getState) => {
+
+	axios.post('/user/updatestation', { station, add: false })
+		.then(res => {
+			if (res.status === 401 || 403) {
+				dispatch(userAuth());
+			}
+			dispatch({
+				type: USER_UPDATE,
+				payload: res.data
+			})
+		})
+
 }
 
-export const setUsersLoading = () => {
-    return {
-        type: USERS_LOADING,
-    }
+export const userSetLoading = () => (dispatch, getState) => {
+	return {
+		type: USER_LOADING
+	}
 }

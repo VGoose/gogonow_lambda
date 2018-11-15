@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+//redux
+import { Provider } from 'react-redux';
+import store from '../store';
+
 import App from './app';
 
 class Index extends React.Component {
@@ -16,7 +20,9 @@ class Index extends React.Component {
   }
   render() {
     return (
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     )
   }
 }
