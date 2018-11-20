@@ -3,7 +3,7 @@ import { Formik } from 'formik';
 import axios from 'axios';
 
 import TopBar from './top_bar';
-import { userAuth, userSetLoading } from '../../actions/user_actions';
+import { userAuth, userSetLoading } from '../actions/user_actions';
 
 const Register = () => {
   return (

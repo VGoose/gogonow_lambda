@@ -16,4 +16,4 @@ let StopTimesSchema = new Schema(
   }
 )
 
-module.exports = Schedules = mongoose.model('schedules', StopTimesSchema); 
+module.exports = Schedule = mongoose.model('schedules', StopTimesSchema); 

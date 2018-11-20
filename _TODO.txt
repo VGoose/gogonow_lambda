@@ -2,3 +2,6 @@ net::ERR_CONNECTION_REFUSED
     sometimes server responds
 
 HTTPS 
+304 Not Modified
+validators on Model 
+location super slow at times

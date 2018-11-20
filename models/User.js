@@ -18,9 +18,7 @@ let UserSchema = new Schema(
       required: true,
     },
     data: {
-      favorite_stations: {
-        type: [String],
-      },
+      favorite_stations: [],
       create_date: {
         type: Date,
         default: Date.now()

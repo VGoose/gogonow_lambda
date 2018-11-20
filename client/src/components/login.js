@@ -3,21 +3,16 @@ import { Formik } from 'formik';
 import axios from '../utils/axios';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-// import { Redirect } from 'react-router-dom';
 
-import { userAuth, userSetLoading } from '../../actions/user_actions';
+import { userLogin } from '../actions/user_actions';
 
-import Cookies from 'js-cookie';
-
-
-const Login = ({ userIsAuth, userIsLoading, userAuth }) => {
+const Login = ({ isAuth, userIsFetching, dispatch}) => {
   return (
-    userIsLoading
+    userIsFetching
       ? <div>
         'Loading...' //TODO
-        {console.log('inside')}
       </div>
-      : userIsAuth
+      : isAuth
         ? <Redirect to="dashboard" />
         : <div className="login-container">
           <h3>
@@ -42,20 +37,8 @@ const Login = ({ userIsAuth, userIsLoading, userAuth }) => {
               return errors;
             }}
             onSubmit={(values, { setSubmitting }) => {
-              axios.post('/api/user/login', { email: values.email, password: values.password })
-                .then((res) => {
-                  if (res.status === 404) {
-                    //TODO 
-                  }
-                  if (res.data.error) {
-                    //something went wrong
-                    errors.API = res.data.error;
-                  } else if (res.data.token) {
-                    Cookies.set('token', res.data.token);
-                    userAuth();
-                  }
-                })
-                .catch(err => console.log(err))
+              dispatch(userLogin({ email: values.email, password: values.password }))
+              setSubmitting(userIsFetching)
             }}
           >
             {({
@@ -101,16 +84,13 @@ const Login = ({ userIsAuth, userIsLoading, userAuth }) => {
 
 function mapStateToProps(state) {
   return {
-    userIsAuth: state.users.isAuth,
-    userIsLoading: state.users.isLoading,
+    isAuth: state.user.isAuth,
+    userIsFetching: state.user.userIsFetching,
   }
 }
 
 export default connect(
   mapStateToProps,
-  {
-    userAuth,
-    userSetLoading
-  }
+  null
 )(Login);
 

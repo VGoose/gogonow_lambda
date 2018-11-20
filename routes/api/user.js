@@ -2,7 +2,7 @@ const router = require('express').Router();
 
 const User = require('../../models/User');
 const jwt = require('jsonwebtoken');
-
+const verifyUser = require('../../scripts/auth/verify')
 
 router.post('/register', (req, res, next) => {
   let username = req.body.username;
@@ -41,27 +41,41 @@ router.post('/login', (req, res) => {
   User.getUserByEmail(email)
     .then(user => User.comparePassword(password, user.password)
       .then(isMatch => isMatch
-        ? jwt.sign({ user }, 'abcdsfewasdbeqpiuwqfdsafjeksdlsdfj ', {/*TODO*/ }, (error, token) => {
-          return error ? res.json({ error }) : res.json({ token })
+        ? jwt.sign({ user }, 'abcdsfewasdbeqpiuwqfdsafjeksdlsdfj', {/*TODO*/ }, (error, token) => {
+            return error ? res.json({ error }) : res.json({ token })
         })
-        : res.json({ error: 'invalid credentials' }))
-      .catch(error => res.json({ error }))
+        : res.json(401, { error: 'invalid credentials' }))
+      .catch(error => res.json(401, { error }))
     )
     .catch(error => res.json({ error }))
 })
 
-router.get('/status', (req, res) => {
-  //TODO
-  res.send(true)
+router.post('/update', verifyUser, (req, res) => {
+  const postData = req.body
+  // const keys = req.data.keys()
+  // const dataArr = keys.map(key => data[key])
+  const update = { data: { ...req.user.data, ...postData }}
+  const options = { new: true}
+  console.log(postData)
+  console.log(update)
+  // console.log(dataArr)
+  //data = { favorite_stations: []} 
+  User.findByIdAndUpdate(req.user._id, update, options)
+    .then(
+      user => res.json(user),
+
+      )
 })
 
-router.get('/data', (req, res) => {
-  //TODO
-  //return user.data from db 
-  //how to get user id? req.userId -- doesn't work
-  console.log(req.user);
-  res.json(req.user)
-
+router.get('/data', verifyUser, (req, res) => {
+  User.findById(req.user._id)
+    .then(
+      user => res.json(user),
+      err => res.json(err)
+    )
+  // res.json(req.user.user)
 })
+
+
 
 module.exports = router;

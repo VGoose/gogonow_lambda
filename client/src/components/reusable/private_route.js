@@ -1,12 +1,11 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-import { authUser } from '../../../actions/user_actions.js'
 import { connect } from 'react-redux';
 
 //destructure and reassign component to Component because need to capitalize component 
-const PrivateRoute = ({ component: Component, ...rest, isAuth, userLoading }) => (
-	userLoading 
+const PrivateRoute = ({ component: Component, ...rest, isAuth, userFetching }) => (
+	userFetching 
 	? 'Loading...'  //TODO
 	: <Route {...rest} render={(props) => (
 		isAuth
@@ -17,14 +16,12 @@ const PrivateRoute = ({ component: Component, ...rest, isAuth, userLoading }) =>
 
 function mapStateToProps(state) {
 	return {
-		isAuth: state.users.isAuth,
-		userLoading: state.users.loading,
+		isAuth: state.user.isAuth,
+		userFetching: state.user.loading,
 	}
 }
 
 export default connect(
 	mapStateToProps,
-	{
-		authUser,
-	}
+	null,
 )(PrivateRoute);

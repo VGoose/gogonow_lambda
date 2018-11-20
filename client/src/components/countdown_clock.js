@@ -46,7 +46,7 @@ const Badge = ({ train }) => {
     default: hue = 'black';
   }
   return (
-    <div className="countdownclock__badge" style={{ backgroundColor: hue, color: 'white' }}>{train}</div>
+    <div  style={{ backgroundColor: hue, color: 'white' }} className="countdownclock__badge align-items-center">{train}</div>
   )
 }
 
@@ -59,7 +59,7 @@ const Row = ({ schedule, index }) => {
         let countdown = seconds > 60 ? minutes : seconds > 30 ? seconds : 'now';
         return (
           <div
-            className="countdownclock__row"
+            className="countdownclock__row list-group-item"
             style={{ backgroundColor: index % 2 == 1 ? '#D5D9DA' : '#FFFFFF' }}
           >
             <div className="countdownclock__train"><Badge train={schedule.train} /></div>
@@ -86,17 +86,17 @@ const CountdownClock = ({ name, schedules, favorite, id }) => {
                 <Row key={schedule.train + schedule.direction + schedule.time} schedule={schedule} index={index} />
               ))
             return (
-              <div className="countdownclock-container">
-                <div className="countdownclock__bar">
-                  <div className="countdownclock__name" onClick={toggle}>{name}</div>
-                  <div className="countdownclock__badges">
+              <div className="countdownclock-container list-group-item mb-2 p-1">
+                <div className="countdownclock__bar d-flex align-items-center">
+                  <div className="countdownclock__name flex-grow-1" onClick={toggle}>{name}</div>
+                  <div className="countdownclock__badges d-flex">
                     {badges}
                   </div>
                   <div className="countdownclock__star">
                     <Star favorite={favorite} id={id} />
                   </div>
                 </div>
-                {show ? <div className="countdownclock__toggle">
+                {show ? <div className="countdownclock__toggle list-group">
                   {rows.slice(0, 3)}
                 </div> : null}
               </div>)
