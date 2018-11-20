@@ -46,7 +46,7 @@ const Badge = ({ train }) => {
     default: hue = 'black';
   }
   return (
-    <div  style={{ backgroundColor: hue, color: 'white' }} className="countdownclock__badge align-items-center">{train}</div>
+    <div  style={{ backgroundColor: hue, color: 'white' }} className="countdownclock-badge align-items-center">{train}</div>
   )
 }
 
@@ -59,11 +59,11 @@ const Row = ({ schedule, index }) => {
         let countdown = seconds > 60 ? minutes : seconds > 30 ? seconds : 'now';
         return (
           <div
-            className="countdownclock__row list-group-item"
-            style={{ backgroundColor: index % 2 == 1 ? '#D5D9DA' : '#FFFFFF' }}
+            className="countdownclock__row list-group-item d-flex"
+            style={{ backgroundColor: index % 2 !== 1 ? '#D5D9DA' : '#FFFFFF' }}
           >
             <div className="countdownclock__train"><Badge train={schedule.train} /></div>
-            <div className="countdownclock__headsign">{schedule.headsign}</div>
+            <div className="countdownclock__headsign flex-grow-1">{schedule.headsign}</div>
             <div className="countdownclock__time">{countdown} {seconds > 60 ? 'min' : Number.isInteger(seconds) && seconds > 30 ? 'sec' : null}</div>
           </div>)
       }}
@@ -86,8 +86,8 @@ const CountdownClock = ({ name, schedules, favorite, id }) => {
                 <Row key={schedule.train + schedule.direction + schedule.time} schedule={schedule} index={index} />
               ))
             return (
-              <div className="countdownclock-container list-group-item mb-2 p-1">
-                <div className="countdownclock__bar d-flex align-items-center">
+              <div className="countdownclock-container list-group-item p-1 border-bottom border-radius rounded">
+                <div className="countdownclock__bar d-flex">
                   <div className="countdownclock__name flex-grow-1" onClick={toggle}>{name}</div>
                   <div className="countdownclock__badges d-flex">
                     {badges}

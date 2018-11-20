@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import Dashboard from '../components/dashboard'
+import DashboardPage from '../components/dashboard_page'
 
 import { userToggleFavorite, fetchUserIfNeeded } from '../actions/user_actions'
 import { fetchScheduleIfNeeded } from '../actions/schedule_actions'
@@ -26,4 +26,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Dashboard)
+)(DashboardPage)

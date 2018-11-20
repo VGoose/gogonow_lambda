@@ -5,11 +5,13 @@
 // @import 'navbar';
 @import 'transit';
 
-// body {
-//   font-family: $fontStack;
-//   font-size: $fontSize;
-// }
-
+body {
+  font-family: $fontStack;
+  font-size: $fontSizeBase;
+}
+.countdownclock__row {
+  font-size: $fontSizeSecond;
+}
 // .container {
 
 // }

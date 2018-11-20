@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 
-import TransitContainer from './containers/transit_container';
-import DashboardContainer from './containers/dashboard_container';
+import Transit from './containers/transit';
+import Dashboard from './containers/dashboard';
 
 import PrivateRoute from './components/reusable/private_route.js';
 
@@ -40,15 +40,15 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div className="container">
+        <div className="container bg-light">
           <NavBar />
           <hr></hr>
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/transit" exact component={TransitContainer} />
+            <Route path="/transit" exact component={Transit} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
-            <PrivateRoute path="/dashboard" component={DashboardContainer} />
+            <PrivateRoute path="/dashboard" component={Dashboard} />
           </Switch>
 
         </div>

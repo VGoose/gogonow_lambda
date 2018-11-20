@@ -29,8 +29,8 @@ const TransitPage = ({ toggleFavorite, userStations, schedule, scheduleIsFetchin
     <div className="transit-container">
       <TopBar page="Transit" />
       <hr></hr>
-      <div className="transit-content">
-        <div className="transit-clocklist list-group">
+      <div className="transit-content bg-light">
+        <div className="transit-clocklist list-group-flush bg-light">
           {stationButtons}
         </div>
       </div>

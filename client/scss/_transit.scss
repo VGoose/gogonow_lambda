@@ -4,13 +4,13 @@
 
 // }
 
-.countdownclock-container {
-  background-color: #F4F4F4;
+// .countdownclock-container {
+  // background-color: #F4F4F4;
   // border: 2px solid $tertiaryColor;
   // border-radius: 20px;
   // margin-bottom: 5px;
   // overflow: hidden;
-}
+// }
 
 // //bar
 // .countdownclock__bar {
@@ -35,12 +35,18 @@
   // width: 20%;
   // display: flex;
 // }
-.countdownclock__badge {
+.countdownclock-badge {
   border-radius: 50%;
   width: 50px;
   height: 50px;
   text-align: center;
+  align-items: center;
 }
+// .countdownclock-badge__sm {
+//   width: 30px;
+//   height: 30px;
+//   border-radius: 50%;
+// }
 // //row
 // .countdownclock__toggle{
 //   display: block;

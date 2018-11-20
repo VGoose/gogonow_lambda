@@ -3,7 +3,7 @@ import TopBar from './top_bar';
 import CountdownClock from './countdown_clock';
 
 
-const Dashboard = ({
+const DashboardPage = ({
   favoriteStations = [],
   userIsFetching,
   schedule,
@@ -34,8 +34,8 @@ const Dashboard = ({
       <TopBar page="Dashboard" />
       <hr></hr>
     
-      <div className="dashboard-content">
-        <div className="dashboard-transit">
+      <div className="dashboard-content bg-light">
+        <div className="dashboard-transit list-group-flush bg-light">
         {stationButtons}
         </div>
       </div>
@@ -45,6 +45,6 @@ const Dashboard = ({
 
 
 
-export default Dashboard
+export default DashboardPage
 
 

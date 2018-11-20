@@ -4,7 +4,7 @@ import Time from './reusable/time';
 
 const TopBar = ({ page }) => {
   return (
-    <div className="row justify-content-between align-items-center top-bar">
+    <div className="top-bar row justify-content-between align-items-center bg-light">
       <h1 className="col-4" >{page} </h1>
       <Time>
         {({ getTimeHHMM, time, day }) => (
