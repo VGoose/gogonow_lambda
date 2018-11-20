@@ -7,13 +7,15 @@ import STATIONS from '../stations.json';
 
 import '../../scss/base.scss';
 
-const Star = ({ favorite, id }) => {
+const Star = ({ favorite, id, isFav }) => {
   return (
-    <button onClick={() => favorite(id)}><img src="../../assets/BlackStar.png" /></button>
+    isFav 
+    ? <button onClick={() => favorite(id)} className="bg-dark"><img src="../../assets/BlackStar.png" /></button>
+    : <button onClick={() => favorite(id)}><img src="../../assets/BlackStar.png" /></button>
   )
 }
 
-const Badge = ({ train }) => {
+const Badge = ({ train, isRowBadge }) => {
   let hue;
   switch (train) {
     case '1': case '2': case '3':
@@ -45,8 +47,13 @@ const Badge = ({ train }) => {
       break;
     default: hue = 'black';
   }
+  if(isRowBadge) {
+    return (
+      <div  style={{ backgroundColor: hue, color: 'white' }} className="countdownclock-badgerow align-middle d-flex align-items-center justify-content-center">{train}</div> 
+    )
+  }
   return (
-    <div  style={{ backgroundColor: hue, color: 'white' }} className="countdownclock-badge align-items-center">{train}</div>
+    <div  style={{ backgroundColor: hue, color: 'white' }} className="countdownclock-badge align-middle d-flex align-items-center justify-content-center">{train}</div>
   )
 }
 
@@ -59,19 +66,19 @@ const Row = ({ schedule, index }) => {
         let countdown = seconds > 60 ? minutes : seconds > 30 ? seconds : 'now';
         return (
           <div
-            className="countdownclock__row list-group-item d-flex"
+            className="countdownclock__row list-group-item d-flex py-1"
             style={{ backgroundColor: index % 2 !== 1 ? '#D5D9DA' : '#FFFFFF' }}
           >
-            <div className="countdownclock__train"><Badge train={schedule.train} /></div>
-            <div className="countdownclock__headsign flex-grow-1">{schedule.headsign}</div>
-            <div className="countdownclock__time">{countdown} {seconds > 60 ? 'min' : Number.isInteger(seconds) && seconds > 30 ? 'sec' : null}</div>
+            <div className="countdownclock__train"><Badge isRowBadge train={schedule.train} /></div>
+            <div className="countdownclock__headsign flex-grow-1 d-flex align-items-center pl-2">{schedule.headsign}</div>
+            <div className="countdownclock__time d-flex align-items-center">{countdown} {seconds > 60 ? 'min' : Number.isInteger(seconds) && seconds > 30 ? 'sec' : null}</div>
           </div>)
       }}
     </Time>
   )
 }
 
-const CountdownClock = ({ name, schedules, favorite, id }) => {
+const CountdownClock = ({ isFav, name, schedules, favorite, id }) => {
   let badges = STATIONS[id].trains
     .map(train => <Badge key={train} train={train} />)
   return (
@@ -88,12 +95,12 @@ const CountdownClock = ({ name, schedules, favorite, id }) => {
             return (
               <div className="countdownclock-container list-group-item p-1 border-bottom border-radius rounded">
                 <div className="countdownclock__bar d-flex">
-                  <div className="countdownclock__name flex-grow-1" onClick={toggle}>{name}</div>
+                  <div className="countdownclock__name flex-grow-1 text-truncate" onClick={toggle}>{name}</div>
                   <div className="countdownclock__badges d-flex">
                     {badges}
                   </div>
-                  <div className="countdownclock__star">
-                    <Star favorite={favorite} id={id} />
+                  <div className="countdownclock__star d-flex">
+                    <Star isFav={isFav} favorite={favorite} id={id} />
                   </div>
                 </div>
                 {show ? <div className="countdownclock__toggle list-group">

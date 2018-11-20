@@ -7,11 +7,13 @@ import { userToggleFavorite } from '../actions/user_actions'
 
 const mapStateToProps = (state) => {
   return {
+    //schedule states
     schedule: state.schedule.schedule,
     scheduleIsFetching: state.schedule.isFetching,
     scheduleError: state.schedule.error,
-
-    userStations: state.user.nearbyStations 
+    //user states
+    userStations: state.user.nearbyStations,
+    userFavoriteStations: state.user.favoriteStations
   }
 }
 

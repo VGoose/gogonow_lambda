@@ -106,12 +106,12 @@ const userDenied = () => {
 
 export const userToggleFavorite = (id) => (dispatch, getState) => {
 	const stationObj = STATIONS[id]
-	const fav = getState().user.favoriteStations
+	const favs = getState().user.favoriteStations
 	let data
-	if (fav.some(s => s.stop_id === id)) {
+	if (favs.some(s => s.stop_id === id)) {
 		//remove from favorites
 		data = {
-			favorite_stations: fav.filter(s => s.stop_id !== id)
+			favorite_stations: favs.filter(s => s.stop_id !== id)
 		}
 	} else {
 		//add to favorites

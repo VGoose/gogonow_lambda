@@ -22,13 +22,17 @@
 //   width: 70%;
 // }
 .countdownclock__star {
-  background-color: aqua;
+  // background-color: aqua;
   width: 10%;
   display: flex;
   justify-content: center;
+  min-width: 50px;
 }
 .countdownclock__star img{
-  height: 50px;
+  max-height: 50px;
+  max-width: 50px;
+  height: 100%;
+  width: 100%;
 }
 // .countdownclock__badges {
   // background-color: mediumpurple;
@@ -41,6 +45,13 @@
   height: 50px;
   text-align: center;
   align-items: center;
+}
+.countdownclock-badgerow {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  align-items: center; 
 }
 // .countdownclock-badge__sm {
 //   width: 30px;

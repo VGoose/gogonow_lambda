@@ -26,6 +26,7 @@ const DashboardPage = ({
         ...northSchedule,
         ...southSchedule
       ]}
+      isFav={true}
       name={station.stop_name}
     />
   })

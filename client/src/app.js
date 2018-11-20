@@ -17,7 +17,7 @@ import NavBar from './components/nav_bar';
 import store from '../store';
 import { connect } from 'react-redux';
 //actions
-import { fetchUserIfNeeded, locateUser, set } from './actions/user_actions';
+import { fetchUserIfNeeded, locateUser } from './actions/user_actions';
 import { fetchScheduleIfNeeded } from './actions/schedule_actions';
 
 //css
@@ -41,7 +41,7 @@ class App extends React.Component {
     return (
       <Router>
         <div className="container bg-light">
-          <NavBar />
+          <NavBar isAuth={this.props.isAuth}/>
           <hr></hr>
           <Switch>
             <Route path="/" exact component={Home} />
@@ -58,7 +58,9 @@ class App extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return {}
+  return {
+    isAuth: state.user.isAuth
+  }
 }
 
 export default connect(

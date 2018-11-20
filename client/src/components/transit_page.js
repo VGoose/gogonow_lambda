@@ -4,9 +4,9 @@ import React from 'react';
 import TopBar from './top_bar';
 import CountdownClock from './countdown_clock';
 
-const TransitPage = ({ toggleFavorite, userStations, schedule, scheduleIsFetching, scheduleError }) => {
-  let northSchedule, southSchedule;
-  let stationButtons = (userStations && !scheduleIsFetching) ?
+const TransitPage = ({ userFavoriteStations, toggleFavorite, userStations, schedule, scheduleIsFetching, scheduleError }) => {
+  let northSchedule, southSchedule, isFav = false
+  let nearbyStations = (userStations && !scheduleIsFetching) ?
     userStations.map((station) => {
       //keys in schedules are stop_id + N/S
       northSchedule = station.stop_id + 'N' in schedule ? schedule[station.stop_id + 'N'] : [];
@@ -21,6 +21,7 @@ const TransitPage = ({ toggleFavorite, userStations, schedule, scheduleIsFetchin
             ...southSchedule
           ]}
           name={station.stop_name}
+          isFav={userFavoriteStations.some(s => s.stop_id === station.stop_id)}
         />
       )
     }) : 'Loading...';
@@ -31,7 +32,7 @@ const TransitPage = ({ toggleFavorite, userStations, schedule, scheduleIsFetchin
       <hr></hr>
       <div className="transit-content bg-light">
         <div className="transit-clocklist list-group-flush bg-light">
-          {stationButtons}
+          {nearbyStations}
         </div>
       </div>
     </div>

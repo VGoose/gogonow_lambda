@@ -15,12 +15,25 @@ const NavItem = ({ path, name }) => {
   )
 }
 
-const NavBar = () => {
+const NavBar = ({isAuth}) => {
+  if (isAuth) {
+    return (
+      <div className="navbar bg-light">
+        <NavItem path="/" name="Home" />
+        <NavItem path="/dashboard" name="Dashboard" />
+        <NavItem path="/transit" name="Transit" />
+        <NavItem path="/weather" name="Weather" />
+       
+        <button /**TODO */>Logout</button>
+      </div> 
+    )
+  }
   return (
     <div className="navbar bg-light">
       <NavItem path="/" name="Home" />
       <NavItem path="/transit" name="Transit" />
       <NavItem path="/weather" name="Weather" />
+      <NavItem path="/login" name="Login" />
     </div>
   )
 }
