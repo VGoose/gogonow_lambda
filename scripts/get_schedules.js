@@ -9,7 +9,7 @@ const URL = `http://datamine.mta.info/mta_esi.php?key=${KEY}&feed_id=`
 
 async function getFeed() {
   let url = URL + '1'
-  let feed = await axios.get(url, { responseType: 'arraybuffer' })
+  let feedMessage = await axios.get(url, { responseType: 'arraybuffer' })
     .then(
       res => GtfsRealtimeBindings.FeedMessage.decode(res.data)
     ).catch(
@@ -22,13 +22,17 @@ async function getFeed() {
         }
       }
     )
-  return feed;
+  return feedMessage;
 }
 
 async function getArrivalTimes() {
-  const output = {};
+  const output = {
+    timestamp: null,
+    schedule: {}
+  };
   try {
     let feed = await getFeed();
+    output.timestamp = new Date(parseInt(feed.header.timestamp) * 1000).toString() 
     'entity' in feed && feed.entity.forEach(function (entity) {
       if (entity.trip_update) {
         let trip = entity.trip_update.stop_time_update;
@@ -43,8 +47,8 @@ async function getArrivalTimes() {
         trip.forEach(stop => {
           let stationId = stop.stop_id
           let time = stop.arrival ? new Date(parseInt(stop.arrival.time) * 1000).toString() : null;
-          if (output[stationId]) {
-            output[stationId].push({
+          if (output.schedule[stationId]) {
+            output.schedule[stationId].push({
               stopId: stationId,
               train: train,
               direction: direction,
@@ -52,7 +56,7 @@ async function getArrivalTimes() {
               time: time,
             })
           } else {
-            output[stationId] = [{
+            output.schedule[stationId] = [{
               stopId: stationId,
               train: train,
               direction: direction,

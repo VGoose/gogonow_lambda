@@ -13,8 +13,8 @@ const scheduleRequest = () => {
 const scheduleReceive = (data) => {
     return {
         type: SCHEDULE_RECEIVE,
-        lastUpdated: Date.now(),
-        data
+        lastUpdated: data.time,
+        schedule: data.schedule
     }
 }
 const scheduleDeny = (err) => {

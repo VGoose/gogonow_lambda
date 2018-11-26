@@ -21,7 +21,7 @@ export default function (state = initialState, action) {
 		case SCHEDULE_RECEIVE:
 			return {
 				...state,
-				schedule: action.data,
+				schedule: action.schedule,
 				lastUpdated: action.lastUpdated,
 				error: null,
 				isFetching: false
