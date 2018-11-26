@@ -1,8 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-//components
-import TopBar from './top_bar';
-import CountdownClock from './countdown_clock';
+import Page from './page'
+import CountdownClock from './countdown_clock'
 
 const TransitPage = ({ userFavoriteStations, toggleFavorite, userStations, schedule, scheduleIsFetching, scheduleError }) => {
   let northSchedule, southSchedule, isFav = false
@@ -27,15 +26,13 @@ const TransitPage = ({ userFavoriteStations, toggleFavorite, userStations, sched
     }) : 'Loading...';
 
   return (
-    <div className="transit-container">
-      <TopBar page="Transit" />
-      <hr></hr>
+    <Page pageName="transit">
       <div className="transit-content bg-light">
         <div className="transit-clocklist list-group-flush bg-light">
           {nearbyStations}
         </div>
       </div>
-    </div>
+    </Page>
   )
 
 }

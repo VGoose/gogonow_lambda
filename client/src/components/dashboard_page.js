@@ -1,6 +1,8 @@
-import React from 'react';
-import TopBar from './top_bar';
-import CountdownClock from './countdown_clock';
+import React from 'react'
+
+import Page from './page'
+import TopBar from './top_bar'
+import CountdownClock from './countdown_clock'
 
 
 const DashboardPage = ({
@@ -31,16 +33,13 @@ const DashboardPage = ({
     />
   })
   return (
-    <div className="dashboard-container">
-      <TopBar page="Dashboard" />
-      <hr></hr>
-    
+    <Page pageName="dashboard">
       <div className="dashboard-content bg-light">
         <div className="dashboard-transit list-group-flush bg-light">
-        {stationButtons}
+          {stationButtons}
         </div>
       </div>
-    </div>
+    </Page>
   )
 }
 
