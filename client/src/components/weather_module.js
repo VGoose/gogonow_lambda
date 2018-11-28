@@ -21,13 +21,13 @@ const SnapshotList = ({data}) => {
 const Bar = ({ isF }) => {
     return <div className="weather-weatherblock-bar">{isF ? 'F' &deg : 'C' &deg } Powered By Dark Sky</div>
 }
-const WeatherBlock = ({ isF, ...rest}) => {
+const WeatherModule = ({ isF, ...rest}) => {
     return(
         <div className="weather-weatherblock">
             <Bar isF={isF} />
-            <SnapshotList data={...rest} />
+            <SnapshotList data={rest} />
         </div>
     )
 }
 
-export default WeatherBlock
+export default WeatherModule

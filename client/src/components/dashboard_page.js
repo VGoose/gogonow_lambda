@@ -3,7 +3,7 @@ import React from 'react'
 import Page from './page'
 import TopBar from './top_bar'
 import CountdownClock from './countdown_clock'
-
+import WeatherModule from './weather_module'
 
 const DashboardPage = ({
   favoriteStations = [],
