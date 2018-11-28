@@ -6,17 +6,26 @@ import CountdownClock from './countdown_clock'
 import WeatherModule from './weather_module'
 
 const DashboardPage = ({
+  //user props
   favoriteStations = [],
   userIsFetching,
+  fetchUser,
+  toggleFavorite,
+  //schedule props
   schedule,
   scheduleIsFetching,
   scheduleError,
   fetchSchedule,
-  fetchUser,
+  //weather props
+  isF,
+  currentForecast,
+  hourlyForecast,
+  weatherError,
+  fetchWeather,
+}) => {
 
-  toggleFavorite }) => {
   let northSchedule, southSchedule
-  const stationButtons = favoriteStations.map(station => {
+  const stations = favoriteStations.map(station => {
     //keys in schedules are stop_id + N/S
     northSchedule = station.stop_id + 'N' in schedule ? schedule[station.stop_id + 'N'] : [];
     southSchedule = station.stop_id + 'S' in schedule ? schedule[station.stop_id + 'S'] : [];
@@ -36,7 +45,12 @@ const DashboardPage = ({
     <Page pageName="dashboard">
       <div className="dashboard-content bg-light">
         <div className="dashboard-transit list-group-flush bg-light">
-          {stationButtons}
+          {stations}
+          <WeatherModule
+            //TODO: use apparent temperature, too
+            isF={isF}
+            hourlyForecast={hourlyForecast}
+          />
         </div>
       </div>
     </Page>

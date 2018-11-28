@@ -14,7 +14,7 @@ const initialState = {
   isF: true,
   error: null
 }
-const weatherReducer = (state = initalState, action) => {
+export default function(state = initialState, action) {
   switch(action.type) {
     case WEATHER_REQUEST: 
       return {

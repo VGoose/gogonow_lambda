@@ -5,9 +5,10 @@ export const weatherTypes = {
   WEATHER_RECEIVE: 'WEATHER_RECEIVE',
   WEATHER_ERROR: 'WEATHER_ERROR'
 }
-export const getWeatherIfNeeded = () => (dispatch, getState) => {
+export const fetchWeatherIfNeeded = () => (dispatch, getState) => {
+  const { lat, lon } = getState().user.location
   shouldWeatherFetch(getState()) 
-    ? dispatch(getWeather)
+    ? dispatch(getWeather(lat, lon))
     : null
 }
 const shouldWeatherFetch = (state) => {
@@ -16,15 +17,16 @@ const shouldWeatherFetch = (state) => {
   console.log(secondsSinceLastUpdate)
   if (isFetching) {
     return false
-  }else if (secondsSinceLastUpdate < 30) {
+  }else if (secondsSinceLastUpdate < 30 && lastUpdated) { 
+    //less than 30 seconds before last updated AND not the startup request
     return false
   }else {
     return true
   }
 }
-const getWeather = () => (dispatch) => {
+const getWeather = (lat, lon) => (dispatch) => {
   dispatch(weatherRequest())
-  axios.get('/api/weather')
+  axios.get('/api/weather', {lat, lon})
     .then(
       res => dispatch(weatherReceive(res.data)),
       err => dispatch(weatherError(err))
@@ -32,12 +34,12 @@ const getWeather = () => (dispatch) => {
 }
 const weatherRequest = () => {
   return {
-    type: WEATHER_REQUEST
+    type: weatherTypes.WEATHER_REQUEST
   }
 }
 const weatherReceive = (data) => {
   return {
-    type: WEATHER_RECEIVE,
+    type: weatherTypes.WEATHER_RECEIVE,
     currentForecast: data.currently,
     hourlyForecast: data.hourly
   }
@@ -45,7 +47,7 @@ const weatherReceive = (data) => {
 
 const weatherError = (error) => {
   return {
-    type: WEATHER_ERROR,
+    type: weatherTypes.WEATHER_ERROR,
     error
   }
 }

@@ -23,6 +23,7 @@ import { fetchScheduleIfNeeded } from './actions/schedule_actions';
 //css
 import '../scss/base.scss';
 import { setNearbyStations } from './actions/user_actions';
+import { fetchWeatherIfNeeded } from './actions/weather_actions';
 
 class App extends React.Component {
   componentDidMount() {
@@ -30,9 +31,15 @@ class App extends React.Component {
     this.props.dispatch(fetchScheduleIfNeeded())
     this.props.dispatch(locateUser())
 
+    //TODO - think about better start-up pattern
     store.subscribe(() => {
-      if (store.getState().user.location && !store.getState().user.nearbyStations) {
-        store.dispatch(setNearbyStations(0.5))
+      if (store.getState().user.location) {
+        if (!store.getState().user.nearbyStations) {
+          store.dispatch(setNearbyStations(0.5))
+        }
+        if (!store.getState().weather.lastUpdated) {
+          store.dispatch(fetchWeatherIfNeeded())
+        }
       }
     })
 

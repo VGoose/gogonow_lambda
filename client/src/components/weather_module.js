@@ -19,7 +19,7 @@ const SnapshotList = ({data}) => {
     )
 }
 const Bar = ({ isF }) => {
-    return <div className="weather-weatherblock-bar">{isF ? 'F' &deg : 'C' &deg } Powered By Dark Sky</div>
+    return <div className="weather-weatherblock-bar">{isF ? 'F'  : 'C'  } Powered By Dark Sky</div>
 }
 const WeatherModule = ({ isF, ...rest}) => {
     return(
