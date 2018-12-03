@@ -4,8 +4,9 @@ import Snapshot from './snapshot'
 const SnapshotList = ({data}) => {
     const { hourlyForecast } = data
     const snapshots = hourlyForecast.map(f => {
-        let time = new Date(f.time) //TODO convert to hour
+        let time = new Date(f.time * 1000) //TODO convert to hour
         return <Snapshot 
+            key={time}
             time={time}
             precipProb={f.precipProbability}
             iconCode={f.icon}
@@ -13,7 +14,7 @@ const SnapshotList = ({data}) => {
         />
     })
     return (
-        <div className="weather-snapshotlist">
+        <div className="weather-snapshotlist d-flex flex-nowrap">
             {snapshots}
         </div>
     )
