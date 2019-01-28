@@ -5,7 +5,7 @@ let Schema = mongoose.Schema;
 let StopTimesSchema = new Schema(
   {
     time: Date,
-    schedule: Object,
+    schedules: Object 
     // [{
     //   stopId: String,
     //   train: String,

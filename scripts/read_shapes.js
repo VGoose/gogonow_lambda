@@ -4,7 +4,7 @@ const { promisify } = require('util');
 const STATIONS = require('./static/stations.json');
 
 
-//include Id into object
+//add trains array to STATION object 
 (async function readStops() {
   const readFile = promisify(fs.readFile);
   const data = await readFile(__dirname + '/static/GTFS_static_data/shapes.txt', 'utf8');
@@ -31,7 +31,7 @@ const STATIONS = require('./static/stations.json');
     })
   }
 
-  fs.writeFile('server/scripts/static/stationswithtrains.JSON', JSON.stringify(STATIONS), 'utf8', (error) => {
+  fs.writeFile('scripts/static/stationswithtrains.JSON', JSON.stringify(STATIONS), 'utf8', (error) => {
     if (error) throw error;
     console.log('data written');
   })

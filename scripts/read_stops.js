@@ -1,7 +1,6 @@
 const fs = require('fs');
 const { promisify } = require('util');
 
-//include Id into object
 (async function readStops() {
 	const readFile = promisify(fs.readFile);
 	let stops = {}; 
