@@ -3,8 +3,6 @@ const getSchedules = require('../../scripts/get_schedules');
 
 const Schedule = require('../../models/Schedule');
 
-const verifyUser = require('../../scripts/auth/verify')
-
 let query;
 let backupData, lastReqTime
 router.get('/', (req, res) => {

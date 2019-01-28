@@ -4,21 +4,15 @@
   "description": "Should you go down?",
   "main": "index.js",
   "scripts": {
-    "clean": "rimraf dist --prefix client",
-    "build": "npm run clean && webpack --prefix client",
-    "client": "npm run start --prefix client",
-    "server": "nodemon server/server.js",
-    "dev": "concurrently \"npm run client\" \"npm run server\"",
-    "test": "mocha || true"
+    "start": "netlify-lambda serve src/lambda",
+    "build": "netlify-lambda build src/lambda"
   },
   "author": "Anh Vo",
   "license": "ISC",
   "devDependencies": {
-    "css-loader": "^1.0.0",
-    "node-sass": "^4.9.3",
-    "nodemon": "^1.18.4",
-    "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.1"
+    "@babel/core": "^7.2.2",
+    "netlify-lambda": "^1.3.0",
+    "nodemon": "^1.18.4"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -34,8 +28,7 @@
     "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.2.14",
     "nearby-cities": "^1.1.0",
-    "passport": "^0.4.0",
-    "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^5.0.1"
+    "protobufjs": "^6.8.8",
+    "serverless-http": "^1.9.0"
   }
 }
