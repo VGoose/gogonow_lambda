@@ -1,7 +1,7 @@
 const STOPS_DATA = require('./static/stations.json');
 const HEADSIGNS_DATA = require('./static/headsigns.json');
 
-var GtfsRealtimeBindings = require('../gtfs-realtime-bindings-fork/nodejs/gtfs-realtime.js');
+var GtfsRealtimeBindings = require('../gtfs-realtime-bindings-frk/gtfs-realtime.js');
 const axios = require('axios');
 
 const KEY = '298f7883cba525efccd7eaddf72d31a8'
