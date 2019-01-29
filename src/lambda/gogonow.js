@@ -23,19 +23,25 @@ app.use(bodyParser.json());
 
 
 const mongoDB = 'mongodb://vgoose:Password1@ds221242.mlab.com:21242/vgoose_db';
-mongoose.connect(mongoDB, {useNewUrlParser: true})
+mongoose.connect(mongoDB, { useNewUrlParser: true })
   .then(() => console.log('connected to database'))
   .catch(err => console.log(err));
 mongoose.Promise = global.Promise;
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-app.use('/.netlify/functions/gogonow/api/schedule/', schedule);
-app.use('/.netlify/functions/gogonow/api/weather/', weather)
-app.get('/.netlify/functions/gogonow', (req, res) => {
-  res.status(200).send('hello world')
+const router = express.Router();
+router.get('/', (req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/html' });
+  res.write('<h1>Hello from Express.js!</h1>');
+  res.end();
 });
 
+app.use('/.netlify/functions/gogonow/schedule', schedule);
+app.use('/.netlify/functions/gogonow/weather', weather)
+app.use('/.netlify/functions/gogonow', router)
+
+module.exports = app
 module.exports.handler = serverless(app)
 
 // const port = process.env.PORT || 5000;
