@@ -14,10 +14,10 @@ const app = express();
 
 //cors setup
 var corsOptions = {
-  origin: ['http://localhost:8080', 'http://localhost:3000', 'exp://127.0.0.1:19000'],
+  origin: ['http://localhost:8080', 'https://nervous-newton-e18e8b.netlify.com', 'http://localhost:3000', 'exp://127.0.0.1:19000'],
   // credentials: true
 }
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
