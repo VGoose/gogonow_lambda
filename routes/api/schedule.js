@@ -18,15 +18,6 @@ router.get('/', (req, res) => {
         lastReqTime = Date.now()
         backupData = data
         res.status(200).send(JSON.stringify(data))
-
-        // query = Schedule.findByIdAndUpdate('5bd75e39e819ae36c704f42a', { time: Date.now(), schedules: data }, { new: true, upsert: true });
-        // query
-        //   .exec()
-        //   .then(document => {
-        //     backupData = document
-        //     res.status(200).send(JSON.stringify(document))
-        //   })
-        //   .catch(error => console.log(error) || res.status(404).send(error))
       },
       error => console.log('schedule error ' + error) || res.status(404).send(error)
     )

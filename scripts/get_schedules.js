@@ -152,7 +152,7 @@ async function getSchedules() {
 }
 
 //debugging
-getSchedules()
+// getSchedules()
 
 module.exports = getSchedules;
 

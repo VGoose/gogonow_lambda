@@ -1,6 +1,6 @@
 #ignore dist 
 .vscode/
-dist/
+
 package-lock.json
 node_modules/
 
