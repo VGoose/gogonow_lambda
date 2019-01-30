@@ -18,9 +18,11 @@ router.get('/', (req, res) => {
     data => {
       lastReqTime = Date.now()
       query = Schedule.findByIdAndUpdate('5bd75e39e819ae36c704f42a', { time: Date.now(), schedules: data }, { new: true, upsert: true });
+      console.log('----made query, time: ' + new Date(Date.now()).toLocaleDateString())
       query
       .exec()
-      .then(document => {
+        .then(document => {
+          console.log('----saved to db, time: ' + new Date(Date.now()).toLocaleDateString())
           backupData = document
           res.status(200).send(JSON.stringify(document))
         })
