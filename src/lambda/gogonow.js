@@ -22,7 +22,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-const mongoDB = 'mongodb://vgoose:Mlabmlab1@ds221242.mlab.com:21242/vgoose_db';
+const mongoDB = 'mongodb://gogonow:gogonow1@ds221242.mlab.com:21242/vgoose_db';
+
 mongoose.connect(mongoDB, { useNewUrlParser: true })
   .then(() => console.log('database connected'))
   .catch(err => console.log(err));
