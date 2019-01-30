@@ -1,6 +1,6 @@
 {
   "name": "gogonow_server",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "gogonow_server",
   "scripts": {
     "start": "netlify-lambda serve src/lambda",
