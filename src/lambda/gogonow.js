@@ -33,13 +33,14 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 const router = express.Router();
 router.get('/', (req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/html' });
-  res.write('<h1>Hello froiii Express.js!</h1>');
+  res.write('<h1>Hello from Express.js!</h1>');
   res.end();
 });
 
-app.use('/.netlify/functions/gogonow/schedule', schedule);
-app.use('/.netlify/functions/gogonow/weather', weather)
-app.use('/.netlify/functions/gogonow', router)
+app.use('/schedule', schedule);
+app.use('/weather', weather)
+
+app.use('/', router)
 
 module.exports = app
 module.exports.handler = serverless(app)
