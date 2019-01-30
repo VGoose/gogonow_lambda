@@ -8,8 +8,8 @@ const KEY = '298f7883cba525efccd7eaddf72d31a8'
 const URL = `http://datamine.mta.info/mta_esi.php?key=${KEY}&feed_id=`
 //ids correspond to endpoints for data on these trains: 
 //[123456S, NQRW, ACEH(FS), BDFM, L, Staten Island Rail, G, JZ, 7]
-const IDs =['1', '16', '26', '21']
-// , '2', '11', '31', '36', '51']
+const IDs =['1']
+//  '16', '26', '21', '2', '11', '31', '36', '51']
 
 //error:  Missing at least one required field for Message .transit_realtime.FeedMessage: header
 //error from one of feed messages, taking down all feeds 
@@ -136,6 +136,7 @@ function readFeed(feed, index) {
 
 //returns array of schedule objects {timestamp, schedule: {stopId, train, direction, headsign, time}}
 async function getSchedules() {
+  console.log('getSchedule executing....')
   try {
     //feeds is an array of decoded arraybuffers 
     let feeds = await getFeeds();
