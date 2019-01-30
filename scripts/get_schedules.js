@@ -50,7 +50,6 @@ const getDateStringFromTimeStamp = (timestamp) => {
 
 
 function readFeed(feed, index) {
-
   if (feed.error) {
     //[123456S, NQRW, ACEH(FS), BDFM, L, Staten Island Rail, G, JZ, 7]
     let id
@@ -69,7 +68,6 @@ function readFeed(feed, index) {
     this.error[id] = feed.error
     return
   }
-
   this.timestamps.push(getDateStringFromTimeStamp(feed.header.timestamp))
   //get schedule from feed
   'entity' in feed && feed.entity.forEach(function readEntity(entity) {
@@ -129,14 +127,10 @@ function readFeed(feed, index) {
       })
     }
   }, this)
-
-
-
 }
 
 //returns array of schedule objects {timestamp, schedule: {stopId, train, direction, headsign, time}}
 async function getSchedules() {
-  console.log('getSchedule executing....')
   try {
     //feeds is an array of decoded arraybuffers 
     let feeds = await getFeeds();
@@ -145,6 +139,7 @@ async function getSchedules() {
       schedules: {},
       error: {},
     }
+    console.log('finshed executing getSchedules....')
     feeds.forEach(readFeed, data)
     return data
   } catch (error) {
