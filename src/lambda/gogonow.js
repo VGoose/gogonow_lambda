@@ -22,13 +22,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-const mongoDB = 'mongodb://vgoose:Password1@ds221242.mlab.com:21242/vgoose_db';
+const mongoDB = 'mongodb://vgoose:Mlabmlab1@ds221242.mlab.com:21242/vgoose_db';
 mongoose.connect(mongoDB, { useNewUrlParser: true })
-  .then(() => console.log('connected to database'))
+  .then(() => console.log('database connected'))
   .catch(err => console.log(err));
 mongoose.Promise = global.Promise;
 let db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.on('error', console.error.bind(console, 'MongoDB connection Error:'));
 
 // const router = express.Router();
 // router.get('/', (req, res) => {
