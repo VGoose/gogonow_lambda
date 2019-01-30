@@ -1,7 +1,7 @@
 const STOPS_DATA = require('./static/stations.json');
 const HEADSIGNS_DATA = require('./static/headsigns.json');
 
-var GtfsRealtimeBindings = require('../gtfs-realtime-bindings-frk/gtfs-realtime.js');
+var GtfsRealtimeBindings = require('gtfs-realtime-bindings');
 const axios = require('axios');
 
 const KEY = '298f7883cba525efccd7eaddf72d31a8'
@@ -15,6 +15,7 @@ const IDs = ['1', '16', '26', '21', '2', '11', '31', '36', '51']
 async function getFeeds() {
   const promises = IDs.map(id => {
     return axios.get(URL + id, { responseType: 'arraybuffer' })
+
   })
 
   return await Promise.all(promises)
@@ -25,7 +26,7 @@ async function getFeeds() {
             return { error: error }
           }
           try {
-            return GtfsRealtimeBindings.FeedMessage.decode(res.data)
+            return GtfsRealtimeBindings.transit_realtime.FeedMessage.decode(res.data)
           }
           //error:  Missing at least one required field for Message .transit_realtime.FeedMessage: header
           catch (error) {
@@ -47,25 +48,41 @@ const getDateStringFromTimeStamp = (timestamp) => {
 }
 
 
-function readFeed(feed) {
+function readFeed(feed, index) {
+
   if (feed.error) {
-    return { error: 'error empty object test' }
+    //[123456S, NQRW, ACEH(FS), BDFM, L, Staten Island Rail, G, JZ, 7]
+    let id
+    switch (index) {
+      case 0: id = 1; break;
+      case 1: id = 16; break;
+      case 2: id = 26; break;
+      case 3: id = 21; break;
+      case 4: id = 2; break;
+      case 5: id = 11; break;
+      case 6: id = 31; break;
+      case 7: id = 36; break;
+      case 8: id = 51; break;
+      default: id = 0
+    }
+    this.error[id] = feed.error
+    return
   }
 
   this.timestamps.push(getDateStringFromTimeStamp(feed.header.timestamp))
   //get schedule from feed
   'entity' in feed && feed.entity.forEach(function readEntity(entity) {
-    if (entity.trip_update) {
+    if (entity.tripUpdate) {
       //ex: trip_id is formatted "090400_1..S03R"
       //train is "1"
       //pathId is S03R
       //direction is South
-      let pathId = entity.trip_update.trip.trip_id.split('..')[1]
+      let pathId = entity.tripUpdate.trip.tripId.split('..')[1]
       //for trip_ids with no pathId
       if (!pathId) {
         return;
       }
-      let train = entity.trip_update.trip.trip_id.split('..')[0].slice(-1)[0];
+      let train = entity.tripUpdate.trip.tripId.split('..')[0].slice(-1)[0];
       let direction = pathId[0]
 
       //try to match route ids to get headsign data
@@ -77,13 +94,13 @@ function readFeed(feed) {
       //     : 'South Bound'
 
       //trip is defined by all the stops of 1 train
-      let trip = entity.trip_update.stop_time_update
+      let trip = entity.tripUpdate.stopTimeUpdate
       //getting the final stop of the train to use as headsign
-      let id = trip.slice(-1)[0].stop_id
+      let id = trip.slice(-1)[0].stopId
       let headsign = STOPS_DATA[id].stop_name
       //going through each stop, adding the estimated time to schedule
       trip.forEach((stop) => {
-        let stop_id = stop.stop_id
+        let stop_id = stop.stopId
         //first station of a path will sometimes only have either arrival or departure time
         //all other stations have both, when both present the times are equal
         let time = stop.arrival
@@ -111,6 +128,9 @@ function readFeed(feed) {
       })
     }
   }, this)
+
+
+
 }
 
 //returns array of schedule objects {timestamp, schedule: {stopId, train, direction, headsign, time}}
@@ -120,7 +140,8 @@ async function getSchedules() {
     let feeds = await getFeeds();
     let data = {
       timestamps: [],
-      schedules: {}
+      schedules: {},
+      error: {},
     }
     feeds.forEach(readFeed, data)
     return data
