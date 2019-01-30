@@ -18,7 +18,6 @@ router.get('/', (req, res) => {
   getSchedules()
     .then(
       data => {
-        console.log('get schedules finished')
         lastReqTime = Date.now()
         backupData = data
         res.status(200).send(JSON.stringify(data))

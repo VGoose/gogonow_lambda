@@ -22,14 +22,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-const mongoDB = 'mongodb://gogonow:gogonow1@ds221242.mlab.com:21242/vgoose_db';
+// const mongoDB = 'mongodb://gogonow:gogonow1@ds221242.mlab.com:21242/vgoose_db';
 
-mongoose.connect(mongoDB, { useNewUrlParser: true })
-  .then(() => console.log('database connected'))
-  .catch(err => console.log(err));
-mongoose.Promise = global.Promise;
-let db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection Error:'));
+// mongoose.connect(mongoDB, { useNewUrlParser: true })
+//   .then(() => console.log('database connected'))
+//   .catch(err => console.log(err));
+// mongoose.Promise = global.Promise;
+// let db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'MongoDB connection Error:'));
 
 // const router = express.Router();
 // router.get('/', (req, res) => {
@@ -37,6 +37,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection Error:'));
 //   res.write('<h1>Hello from Express.js!</h1>');
 //   res.end();
 // });
+
 
 app.use('/.netlify/functions/gogonow/schedule', schedule);
 app.use('/.netlify/functions/gogonow/weather', weather)
