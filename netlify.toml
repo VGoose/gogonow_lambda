@@ -2,3 +2,14 @@
   command = "npm install && npm run build"
   functions = "dist" #  netlify-lambda reads this
 
+[[redirects]]
+  from = "/"
+  to = ".netlify/functions/gogonow/"
+
+[[redirects]]
+  from = "/schedule"
+  to = ".netlify/functions/gogonow/schedule"
+
+[[redirects]]
+  from = "/weather"
+  to = ".netlify/functions/gogonow/weather"
