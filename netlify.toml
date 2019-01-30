@@ -1,6 +1,10 @@
 [build]
   command = "npm install && npm run build"
   functions = "dist" #  netlify-lambda reads this
+[context.production]
+  publish = "project/output/"
+  command = "make publish"
+  environment = { NODE_VERSION = "8.9.3" }
 
 [[redirects]]
   from = "/"
