@@ -1,9 +1,12 @@
-const axios = require('axios') 
-
-//dark sky
-const DS_API_KEY_1='3ca5c3d1835b3656e269d978b7006717'
-const baseUrl = `https://api.darksky.net/forecast/${DS_API_KEY_1}/`
-console.log('testing env variables: ' + process.env.DS_API_KEY)
+const axios = require('axios')
+let config
+try {
+    config = require('../config')
+}
+catch (error) {
+}
+const key = config ? config.DS_API_KEY : process.env.DS_API_KEY
+const baseUrl = `https://api.darksky.net/forecast/${key}/`
 const buildUrl = (lat, lon) => {
     return `${baseUrl}${lat},${lon}`
 }

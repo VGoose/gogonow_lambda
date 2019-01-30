@@ -1,9 +1,6 @@
 const router = require('express').Router();
 const getSchedules = require('../../scripts/get_schedules');
 
-const Schedule = require('../../models/Schedule');
-
-let query;
 let backupData, lastReqTime
 router.get('/', (req, res) => {
   if (lastReqTime && backupData) {

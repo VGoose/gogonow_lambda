@@ -1,11 +1,17 @@
 const STOPS_DATA = require('./static/stations.json');
-const HEADSIGNS_DATA = require('./static/headsigns.json');
-
 var GtfsRealtimeBindings = require('gtfs-realtime-bindings');
 const axios = require('axios');
 
-const KEY = '298f7883cba525efccd7eaddf72d31a8'
-const URL = `http://datamine.mta.info/mta_esi.php?key=${KEY}&feed_id=`
+let config
+try {
+    config = require('../config')
+}
+catch (error) {
+}
+
+
+const key = config ? config.MTA_API_KEY : process.env.MTA_API_KEY
+const URL = `http://datamine.mta.info/mta_esi.php?key=${key}&feed_id=`
 //ids correspond to endpoints for data on these trains: 
 //[123456S, NQRW, ACEH(FS), BDFM, L, Staten Island Rail, G, JZ, 7]
 const IDs =['1', '16', '26', '21', '2', '11', '31', '36', '51']
@@ -138,7 +144,6 @@ async function getSchedules() {
       schedules: {},
       error: {},
     }
-    console.log('finshed executing getSchedules....')
     feeds.forEach(readFeed, data)
     return data
   } catch (error) {
