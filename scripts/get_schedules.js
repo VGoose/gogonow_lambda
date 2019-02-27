@@ -88,22 +88,14 @@ function readFeed(feed, index) {
       }
       let train = entity.tripUpdate.trip.tripId.split('..')[0].slice(-1)[0];
       let direction = pathId[0]
-
-      //try to match route ids to get headsign data
-      //ineffective method to get headsigns data
-      // let headsign = HEADSIGNS_DATA[`${train}${pathId}`]
-      //   ? HEADSIGNS_DATA[`${train}${pathId}`].headsign
-      //   : (direction === 'N')
-      //     ? 'North Bound'
-      //     : 'South Bound'
-
       //trip is defined by all the stops of 1 train
       let trip = entity.tripUpdate.stopTimeUpdate
       //getting the final stop of the train to use as headsign
       let id = trip.slice(-1)[0].stopId
       let headsign = STOPS_DATA[id].stop_name
       //going through each stop, adding the estimated time to schedule
-      trip.forEach((stop) => {
+      let _trip = trip.slice(0, 4)
+      _trip.forEach((stop) => {
         let stop_id = stop.stopId
         //first station of a path will sometimes only have either arrival or departure time
         //all other stations have both, when both present the times are equal

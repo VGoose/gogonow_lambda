@@ -6,12 +6,10 @@ router.get('/', (req, res) => {
   if (lastReqTime && backupData) {
     let secondsSinceLastReq = (Date.now() - lastReqTime) / 1000
     if (secondsSinceLastReq < 30) {
-      console.log('----returning cached data')
       res.status(200).send(JSON.stringify(backupData))
       return
     }
   }
-
   getSchedules()
     .then(
       data => {
