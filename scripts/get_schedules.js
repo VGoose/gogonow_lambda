@@ -94,7 +94,7 @@ function readFeed(feed, index) {
       let id = trip.slice(-1)[0].stopId
       let headsign = STOPS_DATA[id].stop_name
       //going through each stop, adding the estimated time to schedule
-      let _trip = trip.slice(0, 3)
+      let _trip = trip.slice(0, 7)
       _trip.forEach((stop) => {
         let stop_id = stop.stopId
         //first station of a path will sometimes only have either arrival or departure time
