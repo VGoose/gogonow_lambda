@@ -94,8 +94,8 @@ function readFeed(feed, index) {
       let id = trip.slice(-1)[0].stopId
       let headsign = STOPS_DATA[id].stop_name
       //going through each stop, adding the estimated time to schedule
-      let _trip = trip.slice(0, 2)
-      _trip.forEach((stop) => {
+      // let _trip = trip.slice(0, 3)
+      trip.forEach((stop) => {
         let stop_id = stop.stopId
         //first station of a path will sometimes only have either arrival or departure time
         //all other stations have both, when both present the times are equal
@@ -136,7 +136,9 @@ async function getSchedules() {
       schedules: {},
       error: {},
     }
+    console.log('time start: ', Date.now())
     feeds.forEach(readFeed, data)
+    console.log('time end: ', Date.now())
     return data
   } catch (error) {
     throw new Error('getSchedules(): ' + error)
