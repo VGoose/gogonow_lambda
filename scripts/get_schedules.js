@@ -4,7 +4,7 @@ const axios = require('axios');
 
 let config
 try {
-    config = require('../config')
+    config = require('../config/index')
 }
 catch (error) {
 }
@@ -20,6 +20,7 @@ const IDs =['1', '16', '26', '21', '2', '11', '31', '36', '51']
 //error from one of feed messages, taking down all feeds 
 async function getFeeds() {
   const promises = IDs.map(id => {
+
     return axios.get(URL + id, { responseType: 'arraybuffer' })
 
   })
@@ -73,6 +74,7 @@ function readFeed(feed, index) {
     this.error[id] = feed.error
     return
   }
+  console.log('readFeed')
   this.timestamps.push(getDateStringFromTimeStamp(feed.header.timestamp))
   //get schedule from feed
   'entity' in feed && feed.entity.forEach(function readEntity(entity) {
@@ -90,11 +92,13 @@ function readFeed(feed, index) {
       let direction = pathId[0]
       //trip is defined by all the stops of 1 train
       let trip = entity.tripUpdate.stopTimeUpdate
+      //early return for trains without stops defined yet
+      if(trip.length === 0 ) return 
       //getting the final stop of the train to use as headsign
       let id = trip.slice(-1)[0].stopId
       let headsign = STOPS_DATA[id].stop_name
       //going through each stop, adding the estimated time to schedule
-      let _trip = trip.slice(0, 7)
+      let _trip = trip.slice(0, 12)
       _trip.forEach((stop) => {
         let stop_id = stop.stopId
         //first station of a path will sometimes only have either arrival or departure time
@@ -136,17 +140,13 @@ async function getSchedules() {
       schedules: {},
       error: {},
     }
-    console.log('time start: ', Date.now())
+
     feeds.forEach(readFeed, data)
-    console.log('time end: ', Date.now())
     return data
   } catch (error) {
     throw new Error('getSchedules(): ' + error)
   }
 }
-
-//debugging
-// getSchedules()
 
 module.exports = getSchedules;
 
